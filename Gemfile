@@ -8,6 +8,7 @@ gem 'formtastic'
 gem 'hoptoad_notifier'
 gem 'mongoid', '2.0.0.beta.20'
 gem 'mongoid_slug', :require => "mongoid/slug"
+gem 'RedCloth'
 
 group :test, :development do
   gem "autotest"
