@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jellybob/activo-rails.git
-  revision: 0776a8bb5e65e751e48f2a72fc56e1b011be84cc
+  revision: 1480d3f53f7bfcc82ffafbd822da991a5e685d1a
   specs:
     activo-rails (0.0.1)
 
