@@ -154,6 +154,7 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
+    shoulda (2.11.3)
     term-ansicolor (1.0.5)
     thin (1.2.7)
       daemons (>= 1.0.9)
@@ -187,4 +188,5 @@ DEPENDENCIES
   rails (= 3.0.3)
   rspec-rails (~> 2.0.1)
   ruby-debug19
+  shoulda
   thin
