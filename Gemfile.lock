@@ -97,6 +97,8 @@ GEM
       mongo (~> 1.1)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
+    mongoid_slug (0.4.7)
+      mongoid (~> 2.0.0.beta.19)
     nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -169,6 +171,7 @@ DEPENDENCIES
   factory_girl_rails
   launchy
   mongoid (= 2.0.0.beta.20)
+  mongoid_slug
   rails (= 3.0.3)
   rspec-rails (~> 2.0.1)
   ruby-debug19
