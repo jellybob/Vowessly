@@ -2,7 +2,10 @@
 {
   'in the title' => 'h2',
   'in a button' => 'button, input[type=submit]',
-  'in the navigation' => '#main-navigation'
+  'in the navigation' => '#main-navigation',
+  'in the notice flash' => '.flash .notice',
+  'in the error flash' => '.flash .error',
+  'in the warning flash' => '.flash .warning'
 }.
 each do |within, selector|
   Then /^(.+) #{within}$/ do |step|

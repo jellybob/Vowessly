@@ -3,7 +3,8 @@ gem 'rails', '3.0.3'
 
 gem 'activo-rails', :git => 'git://github.com/jellybob/activo-rails.git'
 gem 'bson_ext', '1.1.2'
-gem 'decent_exposure', "~> 1.0.0.rc1"
+gem 'decent_exposure', "~> 1.0.0.rc1", :git => 'git://github.com/jellybob/decent_exposure.git'
+gem 'formtastic'
 gem 'hoptoad_notifier'
 gem 'mongoid', '2.0.0.beta.20'
 gem 'mongoid_slug', :require => "mongoid/slug"

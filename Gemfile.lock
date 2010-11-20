@@ -1,8 +1,14 @@
 GIT
   remote: git://github.com/jellybob/activo-rails.git
-  revision: 1480d3f53f7bfcc82ffafbd822da991a5e685d1a
+  revision: e53ce94bd64818546e4c1acd601310f805602edd
   specs:
     activo-rails (0.0.1)
+
+GIT
+  remote: git://github.com/jellybob/decent_exposure.git
+  revision: 20c5f8cf31afe592814353119c99a579e4c46419
+  specs:
+    decent_exposure (1.0.0.rc1)
 
 GEM
   remote: http://rubygems.org/
@@ -65,7 +71,6 @@ GEM
     culerity (0.2.12)
     daemons (1.1.0)
     database_cleaner (0.6.0)
-    decent_exposure (1.0.0.rc1)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -73,6 +78,10 @@ GEM
     factory_girl (1.3.2)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    formtastic (1.2.0)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (>= 0.4.0)
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
@@ -160,7 +169,7 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thor (0.14.4)
+    thor (0.14.5)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
@@ -179,8 +188,9 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
-  decent_exposure (~> 1.0.0.rc1)
+  decent_exposure (~> 1.0.0.rc1)!
   factory_girl
+  formtastic
   hoptoad_notifier
   launchy
   mongoid (= 2.0.0.beta.20)
