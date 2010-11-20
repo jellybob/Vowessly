@@ -6,7 +6,7 @@ require 'rspec/rails'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 [ "support/**/*.rb", "factories/*.rb" ].each do |path|
-  Dir[Rails.root.join(path)].each {|f| require f}
+  Dir[Rails.root.join("spec").join(path)].each {|f| require f}
 end
 
 RSpec.configure do |config|

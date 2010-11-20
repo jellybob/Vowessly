@@ -10,7 +10,14 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-
+    
+    when /the "([^"]*)" page for "([^"]*)"/
+      content_type, name = $1, $2
+      content_type = content_type.downcase.gsub(/\s+/, '_')
+      
+      page = Page.where(:content_type => content_type).and(:name => name).first
+      page_path(page)
+    
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
