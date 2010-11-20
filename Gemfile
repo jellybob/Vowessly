@@ -8,6 +8,7 @@ group :test, :development do
   gem 'cucumber-rails'
   gem 'cucumber'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
   gem 'launchy'
   gem "ruby-debug19"
   gem "rspec-rails", "~> 2.0.1"
