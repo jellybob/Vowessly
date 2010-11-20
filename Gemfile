@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
+gem 'activo-rails', :git => 'git://github.com/jellybob/activo-rails.git'
 
 group :test, :development do
   gem "autotest"

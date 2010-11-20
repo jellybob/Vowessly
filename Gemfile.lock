@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jellybob/activo-rails.git
+  revision: 0776a8bb5e65e751e48f2a72fc56e1b011be84cc
+  specs:
+    activo-rails (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -143,6 +149,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activo-rails!
   autotest
   capybara
   cucumber
