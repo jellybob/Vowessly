@@ -65,6 +65,7 @@ GEM
     culerity (0.2.12)
     daemons (1.1.0)
     database_cleaner (0.6.0)
+    decent_exposure (0.2.4)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -78,6 +79,9 @@ GEM
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    hoptoad_notifier (2.3.12)
+      activesupport
+      builder
     i18n (0.4.2)
     json (1.4.6)
     json_pure (1.4.6)
@@ -174,7 +178,9 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  decent_exposure
   factory_girl_rails
+  hoptoad_notifier
   launchy
   mongoid (= 2.0.0.beta.20)
   mongoid_slug
