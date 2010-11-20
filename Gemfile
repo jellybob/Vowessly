@@ -16,4 +16,5 @@ group :test, :development do
   gem 'launchy'
   gem "ruby-debug19"
   gem "rspec-rails", "~> 2.0.1"
+  gem 'thin'
 end
