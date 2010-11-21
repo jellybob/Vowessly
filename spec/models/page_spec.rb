@@ -38,4 +38,6 @@ describe Page do
       Page.home.should eq(@home)
     end
   end
+
+  it { should embed_many(:facts) }
 end

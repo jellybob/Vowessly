@@ -9,7 +9,8 @@ $(document).ready(function()
   // Tooltips (see http://onehackoranother.com/projects/jquery/tipsy)
   $('img').each( function() {
     if ($(this).get(0).title != '') {
-      $(this).tipsy();
+      gravity = $(this).attr('data-gravity') || 'n';
+      $(this).tipsy({ gravity: gravity });
     }
   });
 });
@@ -35,5 +36,43 @@ $(function () {
 
   $('.inner .body table').each(function () {
     $(this).addClass('table')
+  })
+
+  $('.expand img').live('click', function () {
+    button = $(this)
+    button.attr('src', button.attr('src').replace('expand', 'contract'))
+    button.attr('title', 'View fewer details')
+    $('.tipsy-inner').html(button.attr('title'))
+    button.attr('alt', 'Contract')
+
+    button.parent().removeClass('expand')
+    button.parent().addClass('contract')
+    
+    button.parent().parent().find('.metadata').slideDown()
+  })
+
+  $('.contract img').live('click', function () {
+    button = $(this)
+    button.attr('src', button.attr('src').replace('contract', 'expand'))
+    button.attr('title', 'View more details')
+    $('.tipsy-inner').html(button.attr('title'))
+    button.attr('alt', 'Expand')
+
+    button.parent().removeClass('contract')
+    button.parent().addClass('expand')
+
+    button.parent().parent().find('.metadata').slideUp()
+  })
+
+  $('.new_fact_button').live('click', function () {
+    $(this).hide()
+    $('#new_fact').show()
+  })
+
+  $('#cancel_fact').live('click', function () {
+    $('#new_fact').hide()
+    $('.new_fact_button').show()
+    $('#new_fact').find('input').each(function () { this.value = '' })
+    return false;
   })
 })

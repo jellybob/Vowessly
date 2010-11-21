@@ -29,4 +29,6 @@ class Page
   end
 
   field :body
+
+  embeds_many :facts
 end

@@ -14,3 +14,58 @@
     </div>
   </div>
 </div>
+
+<div class="block">
+  <div class="content">
+    <h2 class="title">Facts</h2>
+    <div class="inner">
+      <% page.facts.each do |fact| %>
+        <div class="fact" id="fact_<%= fact.id %>">
+          <h3><%= fact.label %></h3>
+          <div class="value"><%= fact.value %></div>
+          <div class="expand"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></div>
+          <div class="metadata">
+            <dl>
+              <dt>Source</dt>
+              <dd class="source"><%= fact.source %></dd>
+
+              <dt>Type</dt>
+              <dd class="type"><%= fact.content_type %></dd>
+
+              <dt>Added</dt>
+              <dd class="created_at"><%= fact.created_at %></dd>
+
+              <% if fact.updated_at && fact.updated_at != fact.created_at %>
+                <dt>Updated</dt>
+                <dd class="updated_at"><%= fact.updated_at %></dd>
+              <% end %>
+            </dl>
+          </div>  
+        </div>
+      <% end %>
+      <div class="new_fact_button">
+        <a href="#"><%= image_tag("icons/16x16/add.png") %> Add a Fact</a>
+      </div>
+      <div class="fact" id="new_fact" style="display: none">
+        <%= semantic_form_for [ page, Fact.new ] do |f| %>
+          <%= f.inputs do %>
+            <h3><label for="fact_label">Label</label> <%= f.text_field :label, :size => "15" %></h3>
+            <div class="value"><label for="fact_value">Value</label> <%= f.text_field :value, :size => nil %></div>
+            <div class="metadata" style="display: block">
+              <dt><label for="fact_source">Source</label></dt>
+              <dd><%= f.text_field :source %></dd>
+              
+              <dt><label for="fact_content_type">Type</label></dt>
+              <dd><%= f.text_field :content_type %></dd>
+            </div>
+            <div class="group navform wat-cf">
+              <button type="submit" class="button"><%= icon "tick" %> Add Fact</button>
+              <button type="submit" class="button" id="cancel_fact"><%= icon "cancel" %> Cancel</button>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
