@@ -14,9 +14,15 @@ module ApplicationHelper
       line.gsub!(/\[page='([\w\s]+)\/([\w\s]+)'\]([^\[]*)\[\/page\]/i) do |match|
         page = Page.where(:content_type => $1, :name => $2).first
         
-        %Q{"#{$3}":#{page_path(page)}}
-      end
+        path = if page
+          page_path(page)
+        else
+          new_page_path(:page => { :name => $2, :content_type => $1 })
+        end
 
+        %Q{"#{$3}":#{path}}
+      end
+      
       line
     end.join("\n")
     
