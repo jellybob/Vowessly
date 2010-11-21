@@ -5,3 +5,34 @@
 a.unresolved {
   color: red;
 }
+
+/* Styling for article contents */
+.body {
+}
+
+  .body p {
+    margin: 0.4em 0px 0.5em;
+    line-height: 1.5em;
+  }
+  
+  .body h3 {
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+  }
+
+  .body ul {
+    margin-left: 1.5em;
+  }
+
+    .body li {
+      margin-bottom: 0.5em;
+    }
+
+  .body dt {
+    font-weight: bold;
+    margin-bottom: 0.2em;
+  }
+
+  .body dd {
+    margin-bottom: 0.5em;
+  }

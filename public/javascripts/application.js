@@ -32,4 +32,8 @@ $(function () {
     $(this).attr('title', 'Click to create this page.')
     $(this).tipsy();
   })
+
+  $('.inner .body table').each(function () {
+    $(this).addClass('table')
+  })
 })
