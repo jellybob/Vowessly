@@ -27,7 +27,7 @@ jQuery(function( $ )
 });
 
 $(function () {
-  $('.inner p a[href^="/pages/new"]').each(function () {
+  $('.inner .body a[href^="/pages/new"]').each(function () {
     $(this).addClass('unresolved')
     $(this).attr('title', 'Click to create this page.')
     $(this).tipsy();

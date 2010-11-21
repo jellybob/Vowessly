@@ -8,7 +8,9 @@
       <div class="highlighted-title-info-grey"><%= page.content_type %></div>
     </h2>
     <div class="inner">
-      <%= format_text page.body if page.body %>
+      <div class="body">
+        <%= format_text page.body if page.body %>
+      </div>
     </div>
   </div>
 </div>
