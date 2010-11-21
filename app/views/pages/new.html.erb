@@ -10,7 +10,7 @@
           <%= f.input :content_type, :label => "Type", :hint => "The type of thing, eg. Person, Town, Church" %>
         <% end %>
         <%= f.inputs do %>
-          <%= f.input :body, :as => :text %>
+          <%= f.input :body, :as => :text, :hint => "<a href=\"http://redcloth.org/textile/\" target=\"_blank\">Textile</a> can be used for formatting in this field.<br />Link to other pages using [page='Person/Alice Hampton']a page about Alice Hampton[/page]".html_safe %>
         <% end %>
         <div class="group navform wat-cf">
           <button type="submit" class="button"><%= icon "tick" %> Create Page</button>
