@@ -5,6 +5,10 @@ module ApplicationHelper
     end
   end
 
+  def user_navigation
+    content_tag("li", link_to(image_tag("session/home.png", :title => "Home"), root_path))
+  end
+
   def format_text(text)
     text = text.split("\n").collect do |line|
       line.gsub!(/^h(\d+)\./) do |match|
