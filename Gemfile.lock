@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jellybob/activo-rails.git
-  revision: e53ce94bd64818546e4c1acd601310f805602edd
+  revision: 38c2893b7544dbd24a848541b8c047e280cd9119
   specs:
     activo-rails (0.0.1)
 
@@ -170,7 +170,7 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thor (0.14.5)
+    thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)

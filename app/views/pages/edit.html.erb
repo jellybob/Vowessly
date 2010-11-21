@@ -1,0 +1,21 @@
+<div class="block">
+  <div class="content">
+    <h2>Editing <%= page.name_changed? ? page.name_was : page.name %></h2>
+    <div class="inner">
+      <%= semantic_form_for page do |f| %>
+        <%= f.inputs :class => "column_left" do %>
+          <%= f.input :name %>
+        <% end %>
+        <%= f.inputs :class => "column_right" do %>
+          <%= f.input :content_type, :label => "Type", :hint => "The type of thing, eg. Person, Town, Church" %>
+        <% end %>
+        <%= f.inputs do %>
+          <%= f.input :body, :as => :text %>
+        <% end %>
+        <div class="group navform wat-cf">
+          <button type="submit" class="button"><%= icon "tick" %> Save Changes</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

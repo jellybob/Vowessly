@@ -6,6 +6,6 @@ Given /^I have created a "([^"]*)" page called "([^"]*)"$/ do |content_type, nam
   create_page(content_type, name)
 end
 
-Given /^I have created a "([^"]*)" page called "([^"]*)" with the following body:$/ do |content_type, name, body|
+Given /^I have created a "([^"]*)" page called "([^"]*)" with the body:$/ do |content_type, name, body|
   create_page(content_type, name, body)
 end

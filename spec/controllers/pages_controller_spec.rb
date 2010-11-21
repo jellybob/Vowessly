@@ -5,10 +5,7 @@ describe PagesController do
     context "when the page being requested exists" do
       let(:page) { Factory.create(:page) }
       
-      before(:each) do
-        get :show, :id => page
-      end
-
+      before(:each) { get :show, :id => page.to_param }
       it { should respond_with(:success) }
       it { should render_template(:show) }
     end
@@ -44,6 +41,43 @@ describe PagesController do
       it "did not create the page" do
         Page.count.should eq(0)
       end
+    end
+  end
+
+  context "on a GET to #edit" do
+    let(:page) { Factory.create(:page) }
+    
+    before(:each) { get :edit, :id => page.to_param }
+    it { should respond_with(:success) }
+    it { should render_template(:edit) }
+  end
+
+  context "on a PUT to #update" do
+    context "when the data provided was valid" do
+      let(:attributes) { HashWithIndifferentAccess.new(:name => "Bob Monkhouse", :content_type => "Celebrity", :body => "He likes to talk.") }
+      let(:page) { Factory.create(:page) }
+
+      before(:each) { put :update, :id => page.to_param, :page => attributes }
+      it { should respond_with(:redirect) }
+      it { should redirect_to(page) }
+      it { should set_the_flash.to("Your changes have been saved.") }
+      
+      describe "the updated page" do
+        before(:each) { page.reload }
+        specify { page.name.should eq("Bob Monkhouse") }
+        specify { page.content_type.should eq("Celebrity") }
+        specify { page.body.should eq("He likes to talk.") }
+      end
+    end
+
+    context "when the data provided was invalid" do
+      let(:attributes) { HashWithIndifferentAccess.new(:name => "Bob Monkhouse", :content_type => "", :body => "He likes to talk.") }
+      let(:page) { Factory.create(:page) }
+
+      before(:each) { put :update, :id => page.to_param, :page => attributes }
+      it { should respond_with(:success) }
+      it { should render_template(:edit) }
+      it { should set_the_flash.to("There was a problem with the details you provided. Have a look below and try again.") }
     end
   end
 end

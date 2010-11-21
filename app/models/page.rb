@@ -9,9 +9,6 @@ class Page
 
   field :content_type
   validates_presence_of :content_type
-  def content_type=(value)
-    self[:content_type] = value.parameterize
-  end
 
   field :body
 end

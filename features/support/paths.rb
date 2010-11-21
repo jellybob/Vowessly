@@ -1,4 +1,13 @@
 module NavigationHelpers
+  PAGE_REGEXP = %Q{"([^"]*)" page for "([^"]*)"}
+  
+  def for_page(content_type, name)
+    page = Page.where(:content_type => content_type).and(:name => name).first
+    raise "No page named #{name} of type #{content_type} was found. Are you sure you created it?" if page.nil?
+    
+    page 
+  end
+
   # Maps a name to a path. Used by the
   #
   #   When /^I go to (.+)$/ do |page_name|
@@ -11,12 +20,11 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     
-    when /the "([^"]*)" page for "([^"]*)"/
-      content_type, name = $1, $2
-      content_type = content_type.downcase.gsub(/\s+/, '_')
-      
-      page = Page.where(:content_type => content_type).and(:name => name).first
-      page_path(page)
+    when /the #{PAGE_REGEXP}/
+      page_path for_page($1, $2)
+    
+    when /the edit #{PAGE_REGEXP}/
+      edit_page_path for_page($1, $2)
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
