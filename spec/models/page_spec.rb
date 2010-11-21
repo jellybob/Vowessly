@@ -27,4 +27,15 @@ describe Page do
     p.content_type = "Person Page"
     p.content_type_slug.should eq("person-page")
   end
+
+  describe "the home page finder" do
+    before(:each) do
+      @not_home = Factory.create(:page, :created_at => "2010-01-01 00:00:00", :name => "Not the home page")
+      @home = Factory.create(:page, :created_at => "2009-01-01 00:00:00", :name => "Home Page")
+    end
+
+    it "should return the first page to be created, by creation time" do
+      Page.home.should eq(@home)
+    end
+  end
 end

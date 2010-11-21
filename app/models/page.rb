@@ -4,8 +4,15 @@ class Page
   include Mongoid::Versioning
   include Mongoid::Timestamps
   
+  def self.home
+    order_by(:created_at.asc).first
+  end
+  
+  index :created_at
+
   field :name
   field :name_slug
+  index :name_slug
   validates_presence_of :name
   def name=(value)
     self[:name_slug] = value.parameterize
@@ -14,6 +21,7 @@ class Page
 
   field :content_type
   field :content_type_slug
+  index :content_type_slug
   validates_presence_of :content_type
   def content_type=(value)
     self[:content_type_slug] = value.parameterize
