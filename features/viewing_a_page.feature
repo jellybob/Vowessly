@@ -4,7 +4,7 @@ Feature: Viewing a page
   So I can refresh my memory of the person in question
   
   Scenario: A page
-    Given I have created a "Person" page called "Alice Hampton" with the following body:
+    Given I have created a "Person" page called "Alice Hampton" with the body:
       """
       Alice is a lovely person, who is also a vowess.
       """
