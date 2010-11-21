@@ -19,4 +19,16 @@ class PagesController < ApplicationController
     end
     respond_with page
   end
+
+  def find_page
+    page = Page.where(:content_type_slug => params[:type], :name_slug => params[:name]).first
+    if page
+      redirect_to page, :status => 301
+    else
+      type = params[:type].titleize.gsub('-', ' ')
+      name = params[:name].titleize.gsub('-', ' ')
+      
+      redirect_to new_page_path(:page => { :content_type => type, :name => name })
+    end
+  end
 end

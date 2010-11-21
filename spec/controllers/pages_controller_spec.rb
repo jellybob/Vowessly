@@ -80,4 +80,25 @@ describe PagesController do
       it { should set_the_flash.to("There was a problem with the details you provided. Have a look below and try again.") }
     end
   end
+
+  context "on a GET to #find_page" do
+    context "when the page exists" do
+      let(:page) { Factory.create(:page, :content_type => "Person", :name => "Alice Hampton") }
+
+      before(:each) do
+        page
+        get :find_page, :type => "person", :name => "alice-hampton"
+      end
+      
+      it { should respond_with(301) }
+      it { should redirect_to(page) }
+    end
+
+    context "when the page does not exist" do
+      before(:each) { get :find_page, :type => "person", :name => "alice-hampton" }
+
+      it { should respond_with(302) }
+      it { should redirect_to(new_page_path(:page => { :name => "Alice Hampton", :content_type => "Person" })) }
+    end
+  end
 end
