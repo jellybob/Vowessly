@@ -67,6 +67,7 @@ $(function () {
   $('.new_fact_button').live('click', function () {
     $(this).hide()
     $('#new_fact').show()
+    $('#new_fact #fact_label').focus()
   })
 
   $('#cancel_fact').live('click', function () {
