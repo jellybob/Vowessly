@@ -108,6 +108,15 @@ a.unresolved {
     .fact .metadata dd {
       padding-top: 0.3em;
     }
+    
+    .fact .metadata ul.actions {
+      list-style: none;
+      margin-top: 0.5em;
+    }
+
+      .fact .metadata ul.actions li {
+        display: inline;
+      }
 
     .fact .metadata input {
       width: 77.5%;

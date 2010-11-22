@@ -30,3 +30,14 @@ Feature: Facts
     And the type should be "Date"
     And the value should be "C15"
     And the source should be "Josiah Clement Wedgwood, History of Parliament: 1439-1509"
+
+  Scenario: Deleting a fact
+    Given I have created a "Person" page called "Alice Hampton"
+    And I have added the following fact to the page:
+      | Label          | Content Type | Value                           | Source                                                     |
+      | Date of Birth  | Date         | C15                             | Josiah Clement Wedgwood, History of Parliament: 1439-1509  |
+    When I go to the "Person" page for "Alice Hampton"
+    And I expand "Date of Birth"
+    And I follow "Delete"
+    Then I should be on the "Person" page for "Alice Hampton"
+    And the fact "Date of Birth" should not be present

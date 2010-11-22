@@ -23,7 +23,7 @@
         <div class="fact" id="fact_<%= fact.id %>">
           <h3><%= fact.label %></h3>
           <div class="value"><%= fact.value %></div>
-          <div class="expand"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></div>
+          <div class="expand"><a href="#" title="Toggle details"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></a></div>
           <div class="metadata">
             <dl>
               <% unless fact.source.blank? %>
@@ -46,6 +46,9 @@
                 <dd class="updated_at"><%= fact.updated_at %></dd>
               <% end %>
             </dl>
+            <ul class="actions">
+              <li><%= link_to(image_tag("icons/16x16/delete.png", title: "Delete", size: "16x16", class: "x-tipsy"), [ page, fact ], method: :delete, confirm: "Are you sure you want to delete the fact '#{fact.label}'. It can't be undone.") %></li>
+            </ul>
           </div>  
         </div>
       <% end %>

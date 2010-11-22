@@ -1,6 +1,5 @@
 class Fact
   include Mongoid::Document
-  include Mongoid::Paranoia
   include Mongoid::Timestamps
   
   embedded_in :page, :inverse_of => :facts

@@ -21,10 +21,19 @@ Given /^I have created a "([^"]*)" page called "([^"]*)" with the body:$/ do |co
   create_page(content_type, name, body)
 end
 
+When /^I expand "([^"]*)"$/ do |fact|
+  within ".fact:has(h3:contains('#{fact}'))" do
+    click_link("Toggle details")
+  end
+end
+
 Then /^I should see the fact "([^"]*)"$/ do |fact|
   @current_fact = fact
-  
   Then %Q{I should see "#{fact}" within ".fact h3"}
+end
+
+Then /^the fact "([^"]*)" should not be present$/ do |fact|
+  page.should_not have_css(".fact:has(h3:contains('#{fact}'))")
 end
 
 Then /^the (\w+) should be "([^"]*)"$/ do |attribute, value|

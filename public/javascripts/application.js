@@ -38,30 +38,40 @@ $(function () {
     $(this).addClass('table')
   })
 
-  $('.expand img').live('click', function () {
-    button = $(this)
+  $('.expand a').live('click', function () {
+    button = $(this).find('img')
     button.attr('src', button.attr('src').replace('expand', 'contract'))
     button.attr('title', 'View fewer details')
     $('.tipsy-inner').html(button.attr('title'))
     button.attr('alt', 'Contract')
-
-    button.parent().removeClass('expand')
-    button.parent().addClass('contract')
     
-    button.parent().parent().find('.metadata').slideDown()
+    expand_div = button.parent().parent()
+    fact_div = expand_div.parent()
+
+    expand_div.removeClass('expand')
+    expand_div.addClass('contract')
+    
+    fact_div.find('.metadata').slideDown()
+
+    return false
   })
 
-  $('.contract img').live('click', function () {
-    button = $(this)
+  $('.contract a').live('click', function () {
+    button = $(this).find('img')
     button.attr('src', button.attr('src').replace('contract', 'expand'))
     button.attr('title', 'View more details')
     $('.tipsy-inner').html(button.attr('title'))
     button.attr('alt', 'Expand')
 
-    button.parent().removeClass('contract')
-    button.parent().addClass('expand')
+    contract_div = button.parent().parent()
+    fact_div = contract_div.parent()
 
-    button.parent().parent().find('.metadata').slideUp()
+    contract_div.removeClass('contract')
+    contract_div.addClass('expand')
+
+    fact_div.find('.metadata').slideUp()
+
+    return false
   })
 
   $('.new_fact_button').live('click', function () {
