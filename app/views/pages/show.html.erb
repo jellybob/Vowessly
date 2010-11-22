@@ -26,15 +26,21 @@
           <div class="expand"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></div>
           <div class="metadata">
             <dl>
-              <dt>Source</dt>
-              <dd class="source"><%= fact.source %></dd>
+              <% if fact.source %>
+                <dt>Source</dt>
+                <dd class="source"><%= fact.source %></dd>
+              <% end %>
 
-              <dt>Type</dt>
-              <dd class="type"><%= fact.content_type %></dd>
+              <% if fact.content_type %>
+                <dt>Type</dt>
+                <dd class="type"><%= fact.content_type %></dd>
+              <% end %>
 
-              <dt>Added</dt>
-              <dd class="created_at"><%= fact.created_at %></dd>
-
+              <% if fact.created_at %>
+                <dt>Added</dt>
+                <dd class="created_at"><%= fact.created_at %></dd>
+              <% end %>
+              
               <% if fact.updated_at && fact.updated_at != fact.created_at %>
                 <dt>Updated</dt>
                 <dd class="updated_at"><%= fact.updated_at %></dd>
