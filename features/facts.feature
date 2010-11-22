@@ -24,12 +24,16 @@ Feature: Facts
     And I fill in "Value" with "C15"
     And I fill in "Type" with "Date"
     And I fill in "Source" with "Josiah Clement Wedgwood, History of Parliament: 1439-1509"
+    And I fill in "Notes" with "This is when she was born"
+    And I fill in "Date" with "C15"
     And I press "Add Fact"
     Then I should be on the "Person" page for "Alice Hampton"
     And I should see the fact "Date of Birth"
     And the type should be "Date"
     And the value should be "C15"
     And the source should be "Josiah Clement Wedgwood, History of Parliament: 1439-1509"
+    And the date should be "C15"
+    And the notes should be "This is when she was born"
 
   Scenario: Deleting a fact
     Given I have created a "Person" page called "Alice Hampton"

@@ -7,5 +7,7 @@ class Fact
   field :label
   field :content_type
   field :value
+  field :notes
+  field :date
   field :source
 end

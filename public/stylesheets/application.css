@@ -122,6 +122,11 @@ a.unresolved {
       width: 77.5%;
     }
 
+    .fact .metadata textarea {
+      width: 77.5%;
+      height: 8em;
+    }
+
   .fact .navform {
       margin-left: 20%;
   }
