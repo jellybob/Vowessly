@@ -34,7 +34,17 @@ Feature: Facts
     And the source should be "Josiah Clement Wedgwood, History of Parliament: 1439-1509"
     And the date should be "C15"
     And the notes should be "This is when she was born"
-
+ 
+  Scenario: Creating a fact with an associated page
+    Given I have created a "Person" page called "William Hampton"
+    And I have created a "Person" page called "Alice Hampton"
+    And I have added the following facts to the page:
+      | Label   | Content Type | Value           |
+      | Uncle   | Person       | William Hampton |
+    When I am on the "Person" page for "Alice Hampton"
+    And I follow "William Hampton"
+    Then I should be on the "Person" page for "William Hampton"
+    
   Scenario: Deleting a fact
     Given I have created a "Person" page called "Alice Hampton"
     And I have added the following fact to the page:

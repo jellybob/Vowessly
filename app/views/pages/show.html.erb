@@ -22,7 +22,7 @@
       <% page.facts.each do |fact| %>
         <div class="fact" id="fact_<%= fact.id %>">
           <h3><%= fact.label %></h3>
-          <div class="value"><%= fact.value %></div>
+          <div class="value"><%= link_or_text(fact.value, fact.content_type) %></div>
           <div class="expand"><a href="#" title="Toggle details"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></a></div>
           <div class="metadata">
             <% unless fact.notes.blank? %>

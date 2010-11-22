@@ -8,6 +8,16 @@ module ApplicationHelper
   def user_navigation
     content_tag("li", link_to(image_tag("session/home.png", :title => "Home"), root_path))
   end
+  
+  def link_or_text(text, type = nil)
+    return text if type.nil?
+
+    if page = Page.where(content_type: type, name: text).first
+      return link_to(text, page)
+    end
+
+    text
+  end
 
   def format_text(text)
     text = text.split("\n").collect do |line|
