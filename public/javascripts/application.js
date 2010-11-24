@@ -86,4 +86,47 @@ $(function () {
     $('#new_fact').find('input').each(function () { this.value = '' })
     return false;
   })
+
+  $('.edit_fact').live('click', function () {
+    fact = $('#' + $(this).attr('id').replace('edit_', ''))
+    
+    $.ajax({
+      url: $(this).attr('href'),
+      success: function (response) {
+        $('.tipsy').hide()
+        $(fact).html(response)
+      }
+    })
+
+    return false
+  })
+  
+  $('.edit_fact_form').live('submit', function () {
+    form = $(this)
+    fact_id = form.attr('id').replace('edit_fact_', '')
+
+    $.ajax({
+      url: form.attr('action'),
+      type: form.attr('method'),
+      data: form.serializeArray(),
+      success: function (response) {
+        fact = $('#fact_' + fact_id)
+        fact.html(response)
+      }
+    })
+
+    return false
+  })
+
+  $('.cancel_edit_fact').live('click', function () {
+    fact_id = $(this).attr('id').replace('edit_fact_', '')
+
+    $.ajax({
+      url: document.location.pathname + '/facts/' + fact_id,
+      success: function (response) {
+        fact = $('#fact_' + fact_id)
+        fact.html(response)
+      }
+    })
+  })
 })

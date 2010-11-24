@@ -1,0 +1,41 @@
+<h3><%= fact.label %></h3>
+<div class="value"><%= link_or_text(fact.value, fact.content_type) %></div>
+<div class="expand"><a href="#" title="Toggle details"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></a></div>
+<div class="metadata">
+  <% unless fact.notes.blank? %>
+    <div class="notes">
+      <%= format_text(fact.notes) %>
+    </div>
+  <% end %>
+
+  <dl>
+    <% unless fact.date.blank? %>
+      <dt>Date</dt>
+      <dd class="date"><%= fact.date %></dd>
+    <% end %>
+   
+    <% unless fact.source.blank? %>
+      <dt>Source</dt>
+      <dd class="source"><%= fact.source %></dd>
+    <% end %>
+    
+    <% unless fact.content_type.blank? %>
+      <dt>Type</dt>
+      <dd class="type"><%= fact.content_type %></dd>
+    <% end %>
+    
+    <% unless fact.created_at.blank? %>
+      <dt>Added</dt>
+      <dd class="created_at"><%= fact.created_at %></dd>
+    <% end %>
+    
+    <% if fact.updated_at && fact.updated_at != fact.created_at %>
+      <dt>Updated</dt>
+      <dd class="updated_at"><%= fact.updated_at %></dd>
+    <% end %>
+  </dl>
+  <ul class="actions">
+    <li><%= link_to(image_tag("icons/16x16/delete.png", title: "Delete", size: "16x16", class: "x-tipsy"), [ page, fact ], method: :delete, confirm: "Are you sure you want to delete the fact '#{fact.label}'. It can't be undone.") %></li>
+    <li><%= link_to(image_tag("icons/16x16/edit.png", title: "Edit", size: "16x16", class: "x-tipsy"), [ :edit, page, fact ], id: dom_id(fact, :edit), class: "edit_fact") %></li>
+  </ul>
+</div>  

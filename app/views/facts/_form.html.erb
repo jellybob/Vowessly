@@ -1,0 +1,23 @@
+<%= semantic_form_for [ page, fact ], html: { class: "#{ fact.new_record? ? "new" : "edit" }_fact_form" } do |f| %>
+  <%= f.inputs do %>
+    <h3><label for="fact_label">Label</label> <%= f.text_field :label, :size => "15" %></h3>
+    <div class="value"><label for="fact_value">Value</label> <%= f.text_field :value, :size => nil %></div>
+    <div class="metadata" style="display: block">
+      <dt><label for="fact_content_type">Type</label></dt>
+      <dd><%= f.text_field :content_type %></dd>
+      
+      <dt><label for="fact_source">Source</label></dt>
+      <dd><%= f.text_field :source %></dd>
+      
+      <dt><label for="fact_date">Date</label></dt>
+      <dd><%= f.text_field :date %></dd>
+
+      <dt><label for="fact_notes">Notes</label></dt>
+      <dd><%= f.text_area :notes %></dd>
+    </div>
+    <div class="group navform wat-cf">
+      <button type="submit" class="button"><%= icon "tick" %> <%= fact.new_record? ? "Add" : "Save" %> Fact</button>
+      <button type="submit" class="button" id="cancel_<%= "edit_" unless fact.new_record? %>fact"><%= icon "cancel" %> Cancel</button>
+    </div>
+  <% end %>
+<% end %>

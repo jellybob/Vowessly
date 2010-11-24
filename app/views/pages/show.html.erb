@@ -21,75 +21,14 @@
     <div class="inner">
       <% page.facts.each do |fact| %>
         <div class="fact" id="fact_<%= fact.id %>">
-          <h3><%= fact.label %></h3>
-          <div class="value"><%= link_or_text(fact.value, fact.content_type) %></div>
-          <div class="expand"><a href="#" title="Toggle details"><%= image_tag("icons/16x16/expand.png", :size => "16x16", :title => "View more details", :"data-gravity" => "e") %></a></div>
-          <div class="metadata">
-            <% unless fact.notes.blank? %>
-              <div class="notes">
-                <%= format_text(fact.notes) %>
-              </div>
-            <% end %>
-
-            <dl>
-              <% unless fact.date.blank? %>
-                <dt>Date</dt>
-                <dd class="date"><%= fact.date %></dd>
-              <% end %>
-             
-              <% unless fact.source.blank? %>
-                <dt>Source</dt>
-                <dd class="source"><%= fact.source %></dd>
-              <% end %>
-              
-              <% unless fact.content_type.blank? %>
-                <dt>Type</dt>
-                <dd class="type"><%= fact.content_type %></dd>
-              <% end %>
-
-              <% unless fact.created_at.blank? %>
-                <dt>Added</dt>
-                <dd class="created_at"><%= fact.created_at %></dd>
-              <% end %>
-              
-              <% if fact.updated_at && fact.updated_at != fact.created_at %>
-                <dt>Updated</dt>
-                <dd class="updated_at"><%= fact.updated_at %></dd>
-              <% end %>
-            </dl>
-            <ul class="actions">
-              <li><%= link_to(image_tag("icons/16x16/delete.png", title: "Delete", size: "16x16", class: "x-tipsy"), [ page, fact ], method: :delete, confirm: "Are you sure you want to delete the fact '#{fact.label}'. It can't be undone.") %></li>
-            </ul>
-          </div>  
+          <%= render partial: "facts/fact", locals: { page: page, fact: fact } %>
         </div>
       <% end %>
       <div class="new_fact_button">
         <a href="#"><%= image_tag("icons/16x16/add.png") %> Add a Fact</a>
       </div>
       <div class="fact" id="new_fact" style="display: none">
-        <%= semantic_form_for [ page, Fact.new ] do |f| %>
-          <%= f.inputs do %>
-            <h3><label for="fact_label">Label</label> <%= f.text_field :label, :size => "15" %></h3>
-            <div class="value"><label for="fact_value">Value</label> <%= f.text_field :value, :size => nil %></div>
-            <div class="metadata" style="display: block">
-              <dt><label for="fact_content_type">Type</label></dt>
-              <dd><%= f.text_field :content_type %></dd>
-              
-              <dt><label for="fact_source">Source</label></dt>
-              <dd><%= f.text_field :source %></dd>
-              
-              <dt><label for="fact_date">Date</label></dt>
-              <dd><%= f.text_field :date %></dd>
-
-              <dt><label for="fact_notes">Notes</label></dt>
-              <dd><%= f.text_area :notes %></dd>
-            </div>
-            <div class="group navform wat-cf">
-              <button type="submit" class="button"><%= icon "tick" %> Add Fact</button>
-              <button type="submit" class="button" id="cancel_fact"><%= icon "cancel" %> Cancel</button>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render partial: "facts/form", locals: { page: page, fact: Fact.new } %>
       </div>
       <div class="clear"></div>
     </div>

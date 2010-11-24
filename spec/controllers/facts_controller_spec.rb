@@ -28,4 +28,37 @@ describe FactsController do
       page.facts.count.should eq(0)
     end
   end
+
+  context "on a GET to #edit" do
+    let(:page) { Factory.create(:page) }
+    let(:fact) { page.facts.create(label: "Name", value: "Jon", content_type: "String", source: "Me") }
+
+    before(:each) { get :edit, :page_id => page.to_param, id: fact.id.to_s }
+    it { should respond_with(:success) }
+    it { should render_template("facts/_form", layout: false) }
+  end
+
+  context "on a PUT to #update" do
+    let(:page) { Factory.create(:page) }
+    let(:fact) { page.facts.create(label: "Name", value: "Jon", content_type: "String", source: "Me") }
+    let(:attributes) { HashWithIndifferentAccess.new(label: "Surname", value: "Wood", content_type: "Name", source: "My Parents") }
+    
+    before(:each) { put :update, page_id: page.to_param, id: fact.id.to_s, fact: attributes }
+    it { should respond_with(:success) }
+    it { should render_template("facts/_fact", layout: false) }
+
+    it "updates the fact" do
+      page.reload
+      page.facts.first.label.should eq("Surname")
+    end
+  end
+
+  context "on a GET to #show" do
+    let(:page) { Factory.create(:page) }
+    let(:fact) { page.facts.create(label: "Name", value: "Jon", content_type: "String", source: "Me") }
+
+    before(:each) { get :show, page_id: page.to_param, id: fact.id.to_s }
+    it { should respond_with(:success) }
+    it { should render_template("facts/_fact", layout: false) }
+  end
 end
