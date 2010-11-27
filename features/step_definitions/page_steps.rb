@@ -21,6 +21,34 @@ Given /^I have created a "([^"]*)" page called "([^"]*)" with the body:$/ do |co
   create_page(content_type, name, body)
 end
 
+Given /^I have the following pages:$/ do |table|
+  table.hashes.each do |page|
+    attributes = page.inject({}) do |memo,item|
+      key = item[0].downcase.gsub(" ", "_")
+      memo[key] = item[1]
+      memo
+    end
+
+    Page.create! attributes
+  end
+end
+
+Given /^I have the following facts:$/ do |table|
+  table.hashes.each do |fact|
+    name = fact.delete("Page")
+    page = Page.where(:name => name).first
+    raise "No page with name #{name} was found." if page.nil?
+    
+    attributes = fact.inject({}) do |memo,item|
+      key = item[0].downcase.gsub(" ", "_")
+      memo[key] = item[1]
+      memo
+    end
+
+    page.facts.create attributes
+  end
+end
+
 When /^I expand "([^"]*)"$/ do |fact|
   within ".fact:has(h3:contains('#{fact}'))" do
     click_link("Toggle details")

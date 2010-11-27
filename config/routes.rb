@@ -3,7 +3,8 @@ Vowessly::Application.routes.draw do
     resources :facts
   end
   
-  match ':type/:name', :controller => "pages", :action => "find_page"
-  
+  match 'autocomplete/:field' => "autocomplete#index"
+  match ':type/:name' => "pages#find_page"
+
   root :to => "home#index"
 end
