@@ -3,7 +3,8 @@ class Page
   include Mongoid::Paranoia
   include Mongoid::Versioning
   include Mongoid::Timestamps
-  
+  include Sunspot::Mongoid
+
   def self.home
     order_by(:created_at.asc).first
   end
@@ -31,4 +32,10 @@ class Page
   field :body
 
   embeds_many :facts
+
+  searchable do
+    text :name
+    text :content_type
+    text :body
+  end
 end
