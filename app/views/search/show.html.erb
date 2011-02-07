@@ -9,7 +9,7 @@
         <% @search.each_hit_with_result do |hit, page| %>
           <div class="result">
             <h3><%= link_to page.name, page %></h3>
-            <p><%= truncate format_text(page.body), :length => 100 %></p>
+            <p><%= truncate page.body, :length => 100 %></p>
           </div>
         <% end %>
       </div>
