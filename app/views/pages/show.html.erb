@@ -9,7 +9,7 @@
     </h2>
     <div class="inner">
       <div class="body">
-        <%= page.formatted_body.html_safe %>
+        <%= format_text page.body if page.body %>
       </div>
     </div>
   </div>
