@@ -24,7 +24,11 @@ Search = Struct.new(:field, :term) do
   def search_for_page_body(regexp)
     Page.where(:body => regexp)
   end
-
+  
+  def search_for_page_type(regexp)
+    Page.where(:content_type => regexp)
+  end
+  
   def model_name
     "Search"
   end

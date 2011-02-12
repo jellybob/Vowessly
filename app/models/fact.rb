@@ -16,7 +16,7 @@ class Fact
 
   def self.labels
     labels = Page.only("facts.label").all.collect { |p| p.facts.collect { |f| f.label } }
-    labels << [ "Page body", "Page name" ]
+    labels << [ "Page body", "Page name", "Page type" ]
     labels.flatten.uniq.sort
   end
 end
