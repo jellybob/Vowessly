@@ -20,6 +20,6 @@ module TextFormattingHelper
       line
     end.join("\n")
     
-    RedCloth.new(text).to_html
+    RedCloth.new(text).to_html.html_safe
   end
 end

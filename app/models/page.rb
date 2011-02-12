@@ -31,6 +31,7 @@ class Page
 
   field :body, :type => String
   def body=(value)
+    Rails.cache.delete("page.#{id}.formatted_body")
     self[:body] = value
   end
 
