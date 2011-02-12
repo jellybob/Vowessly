@@ -55,4 +55,16 @@ describe Fact do
       Fact.labels.should eq([ "Bar", "Foo", "Page body", "Page name" ])
     end
   end
+
+  describe "data massaging" do
+    let(:page) { Factory.create(:page) }
+    
+    describe "white space" do
+      %w{label content_type value date source}.each do |field|
+        it "is stripped from the ends of #{field.humanize.downcase}" do
+          Fact.new(field => " Hello ").send(field).should eq("Hello")
+        end
+      end
+    end
+  end
 end

@@ -3,7 +3,8 @@ class Page
   include Mongoid::Paranoia
   include Mongoid::Versioning
   include Mongoid::Timestamps
-  
+  include WhitespaceStripper
+
   def self.home
     order_by(:created_at.asc).first
   end
@@ -29,6 +30,7 @@ class Page
   end
 
   field :body, :type => String
-
+  
+  strip_whitespace :name, :content_type
   embeds_many :facts
 end

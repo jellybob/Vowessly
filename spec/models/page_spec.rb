@@ -40,4 +40,10 @@ describe Page do
   end
 
   it { should embed_many(:facts) }
+
+  %w{name content_type}.each do |field|
+    it "strips whitespace from the #{field.humanize.downcase} field" do
+      Page.new(field => " Hello ").send(field).should eq("Hello")
+    end
+  end
 end
