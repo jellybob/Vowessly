@@ -1,4 +1,5 @@
 defaults: &defaults
+  host: "localhost"
   allow_dynamic_fields: false
   include_root_in_json: true
   parameterize_keys: true
@@ -11,13 +12,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  host: localhost
-  database: vowessly_development
+  database: "vowessly"
 
 test:
   <<: *defaults
-  host: localhost
-  database: vowessly_test
+  database: "vowessly_test"
 
 # set these environment variables on your prod server
 production:
