@@ -1,14 +1,12 @@
 module ApplicationHelper
-  def main_navigation(n)
-    n.item "Create a Page", new_page_path
-  end
-  
-  def status_menu
-    render :partial => "layouts/search"
+  def main_navigation
+    secondary_navigation do |n|
+      n.item "Create a Page", new_page_path
+    end
   end
 
-  def user_navigation(n)
-    n.item image_tag("session/home.png", :title => "Home"), root_path, :icon => "session/home.png"
+  def user_navigation
+    content_tag("li", link_to(image_tag("session/home.png", :title => "Home"), root_path))
   end
   
   def link_or_text(text, type = nil)

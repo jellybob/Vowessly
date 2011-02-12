@@ -10,7 +10,6 @@ gem 'mongoid', '2.0.0.beta.20'
 gem 'mongoid_slug', :require => "mongoid/slug"
 gem 'RedCloth'
 gem 'hoptoad_notifier'
-gem 'sunspot_mongoid', :git => "git://github.com/perezd/sunspot_mongoid.git"
 
 group :test, :development do
   gem "autotest"
