@@ -7,7 +7,9 @@
   'in the navigation' => '#main-navigation',
   'in the notice flash' => '.flash .notice',
   'in the error flash' => '.flash .error',
-  'in the warning flash' => '.flash .warning'
+  'in the warning flash' => '.flash .warning',
+  'as a search result title' => '.result h3',
+  'as a search result type' => '.result h3 .highlighted-title-info-grey'
 }.
 each do |within, selector|
   Then /^(.+) #{within}$/ do |step|

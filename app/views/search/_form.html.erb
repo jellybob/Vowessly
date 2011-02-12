@@ -1,5 +1,5 @@
-<%= form_tag "/search" do %>
-  <%= select_tag "search_field", options_for_select(Fact.labels) %>
-  <%= text_field_tag "search_term", "" %>
-  <%= submit_tag "Search" %>
+<%= form_for Search.new(params[:search]), :url => search_path, :method => :get, :html => { :method => :get } do |f| %>
+  <%= f.select :field, Fact.labels %>
+  <%= f.text_field :term %>
+  <%= f.submit "Search" %>
 <% end %>

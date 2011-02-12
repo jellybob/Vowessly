@@ -20,12 +20,16 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     
+    when /the search results page/
+      '/search'
+    
     when /the #{PAGE_REGEXP}/
       page_path for_page($1, $2)
     
     when /the edit #{PAGE_REGEXP}/
       edit_page_path for_page($1, $2)
-    
+  
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

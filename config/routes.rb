@@ -1,4 +1,5 @@
 Vowessly::Application.routes.draw do
+  resource :search, :controller => "search"
   resources :pages do
     resources :facts
   end

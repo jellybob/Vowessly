@@ -1,0 +1,20 @@
+<div class="block">
+  <div class="content">
+    <h2 class="title">
+      Found <%= @results.count %> results for <%= @search.term %> in <%= @search.field %>
+    </h2>
+    <div class="inner">
+      <div class="body">
+        <% @results.each do |result| %>
+          <div class="result">
+            <h3>
+              <%= link_to result.name, result %>
+              <div class="highlighted-title-info-grey"><%= result.content_type %></div>
+            </h3>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
