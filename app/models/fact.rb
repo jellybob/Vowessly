@@ -12,6 +12,8 @@ class Fact
   field :source, :type => String
 
   def self.labels
-    Page.only("facts.label").all.collect { |p| p.facts.collect { |f| f.label } }.flatten.uniq.sort
+    labels = Page.only("facts.label").all.collect { |p| p.facts.collect { |f| f.label } }
+    labels << [ "Page body", "Page name" ]
+    labels.flatten.uniq.sort
   end
 end

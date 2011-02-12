@@ -18,15 +18,15 @@ describe Fact do
     
     it { should respond_to(:labels) }
     
-    it "returns an empty array when no facts have been created" do
-      Fact.labels.should eq([])
+    it "returns only page fields when no facts have been created" do
+      Fact.labels.should eq([ "Page body", "Page name" ])
     end
 
     it "returns any specified labels when facts have been created" do
       page = Factory.create(:page)
       page.facts.create(:label => "Foo", :value => "Bar")
 
-      Fact.labels.should eq([ "Foo" ])
+      Fact.labels.should eq([ "Foo", "Page body", "Page name" ])
     end
 
     it "filters out duplicate labels" do
@@ -34,7 +34,7 @@ describe Fact do
       page.facts.create(:label => "Foo", :value => "Bar")
       page.facts.create(:label => "Foo", :value => "Bar")
 
-      Fact.labels.should eq([ "Foo" ])
+      Fact.labels.should eq([ "Foo", "Page body", "Page name" ])
     end
 
     it "returns the labels in alphabetical order" do
@@ -43,7 +43,7 @@ describe Fact do
       page.facts.create(:label => "Foo", :value => "Bar")
       page.facts.create(:label => "Bar", :value => "Bar")
 
-      Fact.labels.should eq([ "Bar", "Foo" ])
+      Fact.labels.should eq([ "Bar", "Foo", "Page body", "Page name" ])
     end
 
     it "returns labels across multiple pages" do
@@ -52,7 +52,7 @@ describe Fact do
       page2 = Factory.create(:page)
       page2.facts.create(:label => "Bar", :value => "Foo")
 
-      Fact.labels.should eq([ "Bar", "Foo" ])
+      Fact.labels.should eq([ "Bar", "Foo", "Page body", "Page name" ])
     end
   end
 end
