@@ -11,6 +11,7 @@ gem 'hoptoad_notifier', '2.4.5'
 gem 'mongoid', '2.0.0.rc.7'
 gem 'mongoid_slug', '0.6.2', :require => 'mongoid/slug'
 gem 'RedCloth', '4.2.7'
+gem 'dalli', '1.0.2'
 
 group :test, :development do
   gem 'autotest', '4.4.6'
