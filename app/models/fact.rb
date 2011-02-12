@@ -10,4 +10,8 @@ class Fact
   field :notes, :type => String
   field :date, :type => String
   field :source, :type => String
+
+  def self.labels
+    Page.only("facts.label").all.collect { |p| p.facts.collect { |f| f.label } }.flatten.uniq.sort
+  end
 end
