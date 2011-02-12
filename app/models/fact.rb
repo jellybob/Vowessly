@@ -6,7 +6,6 @@ class Fact
   embedded_in :page, :inverse_of => :facts
   
   field :label, :type => String
-  index :label, :type => String
   field :content_type, :type => String
   field :value, :type => String
   field :notes, :type => String
