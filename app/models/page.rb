@@ -4,7 +4,8 @@ class Page
   include Mongoid::Versioning
   include Mongoid::Timestamps
   include WhitespaceStripper
-
+  include TextFormattingHelper
+  
   def self.home
     order_by(:created_at.asc).first
   end
@@ -30,7 +31,13 @@ class Page
   end
 
   field :body, :type => String
-  
+  field :formatted_body, :type => String
+  def formatted_body
+    return self[:formatted_body] if self[:formatted_body].present?
+
+    self[:formatted_body] = format_text(body)
+  end
+
   strip_whitespace :name, :content_type
   embeds_many :facts
 end
