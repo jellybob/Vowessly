@@ -1,12 +1,14 @@
 module ApplicationHelper
-  def main_navigation
-    secondary_navigation do |n|
-      n.item "Create a Page", new_page_path
-    end
+  def head
+    hoptoad_javascript_notifier
   end
 
-  def user_navigation
-    content_tag("li", link_to(image_tag("session/home.png", :title => "Home"), root_path))
+  def main_navigation(menu)
+    menu.item "Create a Page", new_page_path
+  end
+
+  def user_navigation(menu)
+    menu.item image_tag("session/home.png", :title => "Home"), root_path
   end
   
   def link_or_text(text, type = nil)
