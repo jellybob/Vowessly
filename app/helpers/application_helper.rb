@@ -11,6 +11,10 @@ module ApplicationHelper
     menu.item image_tag("session/home.png", :title => "Home"), root_path
   end
   
+  def status_menu
+    render "search/form"
+  end
+
   def link_or_text(text, type = nil)
     return text if type.nil?
 
