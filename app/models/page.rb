@@ -31,6 +31,11 @@ class Page
   end
 
   field :body, :type => String
+  def body=(value)
+    self[:body] = value
+    self[:formatted_body] = nil
+  end
+
   field :formatted_body, :type => String
   def formatted_body
     return self[:formatted_body] if self[:formatted_body].present?
