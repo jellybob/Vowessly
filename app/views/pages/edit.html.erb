@@ -19,3 +19,11 @@
     </div>
   </div>
 </div>
+<script>
+$(function () {
+  $('#page_content_type').autocomplete({
+    source: '/autocompletion?type=content_type',
+    minLength: 2
+  })
+})
+</script>
