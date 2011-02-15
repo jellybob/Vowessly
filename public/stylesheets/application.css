@@ -140,3 +140,16 @@ a.unresolved {
     position: relative;
     top: 3px;
   }
+
+/* Autocompletion */
+ul.ui-autocomplete {
+  width: 300px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  list-style: none;
+}
+
+  li.ui-menu-item {
+    font-weight: bold;
+  }
