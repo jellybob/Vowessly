@@ -150,6 +150,15 @@ ul.ui-autocomplete {
   list-style: none;
 }
 
-  li.ui-menu-item {
+  li.ui-menu-item a {
+    padding: 0.5em;
+    display: block;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+  }
+
+  li.ui-menu-item a.ui-state-hover {
     font-weight: bold;
+    border: none;
   }
