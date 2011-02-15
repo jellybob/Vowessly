@@ -6,8 +6,11 @@ Search = Struct.new(:field, :term) do
     self.attributes = attributes
   end
   
+  def value_regexp
+    /.*#{term}.*/i
+  end
+
   def results
-    value_regexp = /.*#{term}.*/i
     search_method = "search_for_#{field.downcase.gsub(/\s+/, "_")}"
     
     if respond_to? search_method
@@ -17,6 +20,38 @@ Search = Struct.new(:field, :term) do
     end
   end
   
+  def completions
+    values = case field
+      when "labels"
+        results
+      when "content_type"
+        results
+      else
+        results.collect { |p|
+          p.facts.select { |f|
+            f.label == field && f.value =~ value_regexp
+          }.collect { |f| f.value }
+        }
+    end
+
+    values.flatten.uniq.sort
+  end
+  
+  def search_for_labels(regexp)
+    Fact.labels(:include_page => false).select { |label|
+      label =~ regexp
+    }
+  end
+  
+  def search_for_content_type(regexp)
+    page_types = Page.where(:content_type => regexp).collect { |p| p.content_type }
+    fact_types = Page.where("facts.content_type" => regexp).collect { |p|
+      p.facts.select { |f| f.content_type =~ regexp }.collect { |f| f.content_type}
+    }
+
+    page_types + fact_types
+  end
+
   def search_for_page_name(regexp)
     Page.where(:name => regexp)
   end

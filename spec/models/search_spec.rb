@@ -102,4 +102,36 @@ describe Search do
       end
     end
   end
+
+  describe "completing a term" do
+    let(:search) { Search.new }
+
+    context "when searching for field labels" do
+      before(:each) do
+        page = Page.create!(:name => "Alice Hampton", :content_type => "Person")
+        page.facts.create!(:label => "Place of Birth", :value => "Whatever")
+
+        search.field = 'labels'
+      end
+
+      it "returns the matching labels if any exist" do
+        search.term = 'Plac'
+        search.completions.should eq([ 'Place of Birth' ])
+      end
+    end
+
+    context "when searching for field values" do
+      before(:each) do
+        page = Page.create!(:name => "Alice Hampton", :content_type => "Person")
+        page.facts.create!(:label => "Place of Birth", :value => "Whatever")
+
+        search.field = 'Place of Birth'
+      end
+
+      it "returns the matching values if any exist" do
+        search.term = "eve"
+        search.completions.should eq([ 'Whatever' ])
+      end
+    end
+  end
 end

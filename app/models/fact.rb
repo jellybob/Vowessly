@@ -14,9 +14,13 @@ class Fact
   
   strip_whitespace :label, :content_type, :value, :date, :source
 
-  def self.labels
+  # Options:
+  #   :include_page => true - Includes page related fields.
+  def self.labels(options = {})
+    options[:include_page] ||= true
+
     labels = Page.only("facts.label").all.collect { |p| p.facts.collect { |f| f.label } }
-    labels << [ "Page body", "Page name", "Page type" ]
+    labels << [ "Page body", "Page name", "Page type" ] if options[:include_page]
     labels.flatten.uniq.sort
   end
 end

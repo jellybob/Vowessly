@@ -20,4 +20,28 @@
       <button type="submit" class="button" id="cancel_<%= "edit_" unless fact.new_record? %>fact"><%= icon "cancel" %> Cancel</button>
     </div>
   <% end %>
+
+  <script>
+    $(function () {
+      $('#fact_label').autocomplete({
+        source: "/autocompletion?type=labels",
+        minLength: 2
+      })
+
+      $('#fact_value').autocomplete({
+        source: function (request, callback) {
+          uri = '/autocompletion?term=' + request.term + '&type=' + $('#fact_label').val()
+          response = $.getJSON(uri, function (data) {
+            callback(data)
+          })
+        },
+        minLength: 2
+      })
+
+      $('#fact_content_type').autocomplete({
+        source: "/autocompletion?type=content_type",
+        minLength: 2
+      })
+    })
+  </script>
 <% end %>
