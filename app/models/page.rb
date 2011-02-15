@@ -30,10 +30,6 @@ class Page
   end
 
   field :body, :type => String
-  def body=(value)
-    Rails.cache.delete("page.#{id}.formatted_body")
-    self[:body] = value
-  end
 
   strip_whitespace :name, :content_type
   embeds_many :facts
