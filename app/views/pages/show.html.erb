@@ -9,9 +9,7 @@
     </h2>
     <div class="inner">
       <div class="body">
-        <% cache("page.#{page.id}-#{page.updated_at}.formatted_body") do %>
-          <%= format_text page.body if page.body %>
-        <% end %>
+        <%= format_text page.body if page.body %>
       </div>
     </div>
   </div>
