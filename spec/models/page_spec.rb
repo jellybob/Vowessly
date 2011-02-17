@@ -46,4 +46,28 @@ describe Page do
       Page.new(field => " Hello ").send(field).should eq("Hello")
     end
   end
+
+  it "can list content types" do
+    Page.should respond_to(:content_types)
+  end
+
+  describe "listing content types" do
+    it "returns the only existing content type when one exists" do
+      Page.create(:content_type => "Foo", :name => "A page")
+      Page.content_types.should eq([ "Foo" ])
+    end
+    
+    it "returns the all content types in order when multiple types exist" do
+      Page.create(:content_type => "Foo", :name => "A page")
+      Page.create(:content_type => "Bar", :name => "Page 1")
+      Page.content_types.should eq([ "Bar", "Foo" ])
+    end
+
+    it "returns all content types without duplicates" do
+      Page.create(:content_type => "Foo", :name => "A page")
+      Page.create(:content_type => "Bar", :name => "Page 1")
+      Page.create(:content_type => "Bar", :name => "Page 2")
+      Page.content_types.should eq([ "Bar", "Foo" ])
+    end
+  end
 end

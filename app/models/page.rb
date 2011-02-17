@@ -9,6 +9,10 @@ class Page
     order_by(:created_at.asc).first
   end
   
+  def self.content_types
+    Page.only(:content_type).all.collect { |p| p.content_type }.uniq.sort
+  end
+
   index :created_at
 
   field :name, :type => String
