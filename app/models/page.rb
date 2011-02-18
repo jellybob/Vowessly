@@ -33,4 +33,35 @@ class Page
 
   strip_whitespace :name, :content_type
   embeds_many :facts
+
+  def self.content_types
+    options = { "field.content_type" => "Location" }
+
+    map = <<-MAP
+      function () {
+        location = null;
+        forEach(this.fields) {
+          function (field) {
+            if (field.content_type == "Location") {
+              location = field.value;
+            }
+          }
+        }
+
+        emit(this.name, { content_type: this.content_type, location: location });
+      }
+    MAP
+
+    reduce = <<-REDUCE
+      function (key, values) {
+        return {
+          name: key,
+          content_type: value.content_type,
+          location: value.location
+        }
+      }
+    REDUCE
+
+    mapreduce(map, reduce, options)
+  end
 end
