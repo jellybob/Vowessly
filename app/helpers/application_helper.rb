@@ -4,9 +4,6 @@ module ApplicationHelper
   end
 
   def main_navigation(menu)
-    Page.content_types.each do |content_type|
-      menu.item content_type.pluralize, type_index_path(content_type.pluralize.downcase)
-    end
     menu.item "Create a Page", new_page_path
   end
 

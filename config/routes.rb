@@ -5,8 +5,7 @@ Vowessly::Application.routes.draw do
     resources :facts
   end
   
-  match ':type' => "pages#index", :as => :type_index
-  match ':type/:name', :to => "pages#find_page"
+  match ':type/:name', :controller => "pages", :action => "find_page"
   
   root :to => "home#index"
 end

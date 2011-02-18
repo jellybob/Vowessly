@@ -1,11 +1,6 @@
 class PagesController < ApplicationController
   respond_to :html
   expose :page
-  
-  def index
-    content_type = params[:type].to_s.singularize.humanize
-    @pages = Page.where(:content_type =~ /^#{content_type}$/i).order(:name).all
-  end
 
   def create
     if page.save
