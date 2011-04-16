@@ -11,4 +11,17 @@
       </div>
     </div>
   </div>
+  
+  <div class="block" id="content_types">
+    <div class="content">
+      <h2 class="title">Types</h2>
+      <div class="inner">
+        <ul>
+          <% content_types.each do |type| -%>
+            <li><%= type %></li>
+          <%- end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

@@ -12,7 +12,6 @@ Feature: Label management
       | Uncle   | Person       | William Hampton |
       | Uncel   | Persn        | Mr. Typo        |
   
-  @wip
   Scenario: Viewing fact names
     When I follow "Manage Labels"
     Then the following fact names should be shown:

@@ -59,6 +59,37 @@ describe Fact do
       Fact.labels.should eq([ "Bar", "Foo", "Page body", "Page name", "Page type" ])
     end
   end
+  
+  describe "getting a list of content types" do
+    before(:each) do
+      page = Factory.create(:page, :content_type => "Person")
+      page.facts.create(:label => "Foo", :value => "Bar", :content_type => "Place")
+      page.facts.create(:label => "Foo", :value => "Bar", :content_type => "Date")
+      
+      page2 = Factory.create(:page, :content_type => "Place")
+      page2.facts.create(:label => "Foo", :value => "Bar", :content_type => "Date")
+    end
+
+    subject { Fact.content_types }
+
+    it "returns all known content types for facts" do
+      subject.should include "Place"
+      subject.should include "Date"
+    end
+
+    it "returns all known content types for pages" do
+      subject.should include "Person"
+      subject.should include "Place"
+    end
+
+    it "only shows each content type once" do
+      subject.should have(3).content_types
+    end
+
+    it "shows content types in alphabetical order" do
+      subject.should == [ "Date", "Person", "Place" ]
+    end
+  end
 
   describe "data massaging" do
     let(:page) { Factory.create(:page) }
