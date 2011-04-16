@@ -175,7 +175,18 @@ ul.ui-autocomplete {
   list-style: none;
 }
   
-  #facts li, #content_types li {
+  #facts li span, #content_types li span {
     font-size: 1.2em;
     margin-bottom: 0.5em;
+    padding: 0.2em;
+  }
+
+  #facts li input, #content_types li input {
+    padding: 0.2em;
+    font-size: 1.1em;
+  }
+
+  #facts li img, #content_type li img {
+    position: relative;
+    top: 2px;
   }

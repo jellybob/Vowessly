@@ -130,5 +130,7 @@ $(function () {
     })
   })
 
-  
+  $('#facts li span, #content_types li span').live('click', function () {
+    $(this).parent().html('<input type="text" name="fact" value="' + $(this).text() + '" /> <img src="/images/icons/16x16/disk.png" />');
+  })
 })
