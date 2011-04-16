@@ -17,7 +17,7 @@ class Fact
   # Options:
   #   :include_page => true - Includes page related fields.
   def self.labels(options = {})
-    options[:include_page] ||= true
+    options[:include_page] = true unless options.key?(:include_page)
 
     labels = Page.only("facts.label").all.collect { |p| p.facts.collect { |f| f.label } }
     labels << [ "Page body", "Page name", "Page type" ] if options[:include_page]

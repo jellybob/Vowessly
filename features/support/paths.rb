@@ -29,7 +29,9 @@ module NavigationHelpers
     when /the edit #{PAGE_REGEXP}/
       edit_page_path for_page($1, $2)
   
-
+    when /the labels page/
+      labels_path
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

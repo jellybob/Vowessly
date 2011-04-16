@@ -21,7 +21,11 @@ describe Fact do
     it "returns only page fields when no facts have been created" do
       Fact.labels.should eq([ "Page body", "Page name", "Page type" ])
     end
-
+    
+    it "exludes page fields when requested" do
+      Fact.labels(:include_page => false).should eq([])
+    end
+    
     it "returns any specified labels when facts have been created" do
       page = Factory.create(:page)
       page.facts.create(:label => "Foo", :value => "Bar")

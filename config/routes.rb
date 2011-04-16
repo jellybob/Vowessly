@@ -4,6 +4,7 @@ Vowessly::Application.routes.draw do
   resources :pages do
     resources :facts
   end
+  resources :labels
   
   match ':type/:name', :controller => "pages", :action => "find_page"
   

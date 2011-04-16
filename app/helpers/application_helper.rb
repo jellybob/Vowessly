@@ -5,6 +5,7 @@ module ApplicationHelper
 
   def main_navigation(menu)
     menu.item "Create a Page", new_page_path
+    menu.item "Manage Labels", labels_path
   end
 
   def user_navigation(menu)
