@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'rails', '3.0.4'
 
-gem 'activo-rails', :git => 'https://github.com/jellybob/activo-rails.git'
+gem 'activo-rails', :path => "../activo-rails"
 gem 'bson_ext', '1.2.1'
 gem 'mongo', '1.2.1'
 gem 'decent_exposure', :git => 'https://github.com/jellybob/decent_exposure.git'
