@@ -26,4 +26,5 @@ group :test, :development do
   gem 'ruby-debug19', '0.11.6'
   gem 'shoulda', '2.11.3'
   gem 'thin', '1.2.7'
+  gem 'foreman', '0.13.0'
 end
