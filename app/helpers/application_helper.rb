@@ -4,6 +4,8 @@ module ApplicationHelper
   end
 
   def main_navigation(menu)
+    menu.item "Canterbury", "/by_province/Canterbury"
+    menu.item "York", "/by_province/York"
     menu.item "Create a Page", new_page_path
     menu.item "Manage Labels", labels_path
   end
