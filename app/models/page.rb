@@ -64,4 +64,8 @@ class Page
 
     mapreduce(map, reduce, options)
   end
+
+  def surname
+    name.split(" ").last
+  end
 end

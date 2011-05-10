@@ -33,6 +33,6 @@ class PagesController < ApplicationController
   end
 
   def by_province
-    @pages = Search.new(:field => "Province", :term => params[:province]).results.sort { |a,b| b.name.split(" ").last <=> a.name.split(" ").last }
+    @pages = Search.new(:field => "Province", :term => params[:province]).results.sort { |a,b| a.surname <=> b.surname }
   end
 end
