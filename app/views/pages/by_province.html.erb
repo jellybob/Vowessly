@@ -7,7 +7,12 @@
       <div class="body">
         <ul id="vowesses">
           <% @pages.each do |page| %>
-            <li><%= link_to page.name, page %></li>
+            <li>
+              <%= link_to page.name, page %>
+              <% if page.facts.where("label" => "Alias").size > 0 %>
+                (<%= page.facts.where("label" => "Alias").collect { |f| f.value }.join(", ") %>)
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div>
