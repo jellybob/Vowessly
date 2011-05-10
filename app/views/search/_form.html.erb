@@ -1,5 +1,5 @@
 <%= form_for Search.new(params[:search]), :url => search_path, :method => :get, :html => { :method => :get } do |f| %>
-  <%= f.select :field, Fact.labels %>
+  <%= f.select :field, [ "" ] + Fact.labels %>
   <%= f.text_field :term %>
   <%= f.submit "Search" %>
 <% end %>

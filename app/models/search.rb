@@ -16,7 +16,12 @@ Search = Struct.new(:field, :term) do
     if respond_to? search_method
       send search_method, value_regexp
     else
-      Page.where("facts.label" => field).and("facts.value" => value_regexp)
+      search = Page.where("facts.value" => value_regexp)
+      if field && !field.blank?
+        search = search.and("facts.label" => field)
+      end
+
+      search
     end
   end
   
