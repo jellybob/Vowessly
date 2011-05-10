@@ -31,4 +31,8 @@ class PagesController < ApplicationController
       redirect_to new_page_path(:page => { :content_type => type, :name => name })
     end
   end
+
+  def by_province
+    @pages = Search.new(:field => "Province", :term => params[:province]).results.sort { |a,b| b.name.split(" ").last <=> a.name.split(" ").last }
+  end
 end
