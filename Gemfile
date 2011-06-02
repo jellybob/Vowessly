@@ -12,6 +12,7 @@ gem 'mongoid', '2.0.0.rc.7'
 gem 'mongoid_slug', '0.6.2', :require => 'mongoid/slug'
 gem 'RedCloth', '4.2.7'
 gem 'dalli', '1.0.2'
+gem 'unicorn', '3.6.2'
 
 group :test, :development do
   gem 'autotest', '4.4.6'
@@ -25,6 +26,5 @@ group :test, :development do
   gem 'rspec-rails', '2.0.1'
   gem 'ruby-debug19', '0.11.6'
   gem 'shoulda', '2.11.3'
-  gem 'thin', '1.2.7'
   gem 'foreman', '0.13.0'
 end
