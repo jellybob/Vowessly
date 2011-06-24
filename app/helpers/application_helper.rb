@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def user_navigation(menu)
-    menu.item image_tag("session/home.png", :title => "Home"), root_path
+    menu.item image_tag("activo-rails/session/home.png", :title => "Home"), root_path
   end
   
   def status_menu
