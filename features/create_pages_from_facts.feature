@@ -1,4 +1,4 @@
-@javascript @wip
+@javascript
 Feature: Creating pages from facts
   As a researcher
   I want to create a new page from a fact
