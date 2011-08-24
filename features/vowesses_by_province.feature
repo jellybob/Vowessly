@@ -1,4 +1,3 @@
-@wip
 Feature: Displaying vowesses by their province
   As a researcher
   I want to see all Vowesses listed by their province
