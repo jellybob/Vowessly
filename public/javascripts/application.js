@@ -86,6 +86,25 @@ $(function () {
     $('#new_fact').find('input').each(function () { this.value = '' })
     return false;
   })
+  
+  $('.create_page').live('click', function () {
+    var fact = $('#' + $(this).attr('id').replace('create_page_fact', 'fact'))
+    var data = {
+      type: fact.find('.type').text(),
+      name: fact.find('.value').text()
+    }
+    
+    $.ajax({
+      url: $(this).attr('href'),
+      type: 'post',
+      data: data,
+      success: function (response) {
+        document.location.href = response.uri
+      }
+    })
+
+    return false
+  })
 
   $('.edit_fact').live('click', function () {
     fact = $('#' + $(this).attr('id').replace('edit_', ''))

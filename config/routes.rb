@@ -2,7 +2,11 @@ Vowessly::Application.routes.draw do
   resource :search, :controller => "search"
   resource :autocompletion, :controller => "autocompletion"
   resources :pages do
-    resources :facts
+    resources :facts do
+      member do
+        post :link
+      end
+    end
   end
   resources :labels
     

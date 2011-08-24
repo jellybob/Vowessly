@@ -35,6 +35,7 @@
     <% end %>
   </dl>
   <ul class="actions">
+    <li><%= link_to(image_tag("icons/16x16/create_page.png", title: "Create Page", size: "16x16", class: "x-tipsy"), [ :link, page, fact ], id: dom_id(fact, :create_page), title: "Create Page", class: "create_page") %></li>
     <li><%= link_to(image_tag("icons/16x16/delete.png", title: "Delete", size: "16x16", class: "x-tipsy"), [ page, fact ], method: :delete, confirm: "Are you sure you want to delete the fact '#{fact.label}'. It can't be undone.") %></li>
     <li><%= link_to(image_tag("icons/16x16/edit.png", title: "Edit", size: "16x16", class: "x-tipsy"), [ :edit, page, fact ], id: dom_id(fact, :edit), class: "edit_fact") %></li>
   </ul>
