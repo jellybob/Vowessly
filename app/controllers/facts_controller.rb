@@ -30,4 +30,12 @@ class FactsController < ApplicationController
     
     render partial: "fact", locals: { page: page, fact: fact }, :layout => false
   end
+
+  def link
+    fact = page.facts.find(params[:id])
+    attributes = { content_type: fact.content_type, name: fact.value }
+    new_page = Page.where(attributes).first || Page.create(attributes)
+
+    redirect_to(new_page)
+  end
 end

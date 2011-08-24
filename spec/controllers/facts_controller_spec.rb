@@ -56,9 +56,21 @@ describe FactsController do
   context "on a GET to #show" do
     let(:page) { Factory.create(:page) }
     let(:fact) { page.facts.create(label: "Name", value: "Jon", content_type: "String", source: "Me") }
-
     before(:each) { get :show, page_id: page.to_param, id: fact.id.to_s }
     it { should respond_with(:success) }
     it { should render_template("facts/_fact", layout: false) }
+  end
+
+  context "on a POST to #link" do
+    context "when the fact is not yet linked" do
+      let(:page) { Factory.create(:page) }
+      let(:fact) { page.facts.create(label: "Name", value: "Jon", content_type: "Person") }
+      before(:each) { post :link, page_id: page.to_param, id: fact.id.to_s }
+      
+      it { should respond_with(:redirect) }
+      it "creates the page" do
+        Page.where(content_type: "Person", name: "Jon").count.should eq(1)
+      end
+    end
   end
 end
