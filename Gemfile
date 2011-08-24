@@ -16,10 +16,9 @@ gem 'unicorn', '3.6.2'
 
 group :test, :development do
   gem 'autotest', '4.4.6'
-  gem 'capybara', '0.4.1.2'
-  gem 'capybara-webkit'
+  gem 'capybara', '1.0.1'
   gem 'cucumber-rails', '0.3.2'
-  gem 'cucumber', '0.10.0'
+  gem 'cucumber', '1.0.2'
   gem 'database_cleaner', '0.6.3'
   gem 'factory_girl', '1.3.3'
   gem 'launchy', '0.3.7'
