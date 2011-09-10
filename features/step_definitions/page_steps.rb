@@ -2,6 +2,14 @@ def create_page(content_type, name, body = nil)
   @current_page = Page.create!(:content_type => content_type, :name => name, :body => body)
 end
 
+When "there are no pages" do
+  # noop 
+end
+
+When "there are some pages" do
+  
+end
+
 Given /^I have added the following facts? to the page:$/ do |facts|
   facts.hashes.each do |fact|
     @current_page.facts.create!(

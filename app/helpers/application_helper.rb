@@ -6,6 +6,11 @@ module ApplicationHelper
   def main_navigation(menu)
     menu.item "Canterbury", "/by_province/Canterbury"
     menu.item "York", "/by_province/York"
+
+    Page.content_types.each do |type|
+      menu.item type.pluralize, content_type_path(type), :class => "type"
+    end
+
     menu.item "Create a Page", new_page_path
     menu.item "Manage Labels", labels_path
   end
