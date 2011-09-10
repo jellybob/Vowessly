@@ -14,18 +14,22 @@ When "I click on a type" do
   end
 end
 
-Then "it should show all the pages of that type" do
-  type = Page.first.content_type
+def for_each_page_of_type(type)
   Page.of_type(type).each do |page|
-    page.should have_css "#page_list li a[href='/pages/#{page.id}']", 
-                         :text => page.title
+    yield page
+  end
+end
+
+Then "it should show all the pages of that type" do
+  for_each_page_of_type(Page.first.content_type) do |p|
+    page.should have_css "#page_list a[href='#{page_path(p)}']", 
+                         :text => p.name
   end
 end
 
 And "it shouldn't show pages of other types" do
-  type = Page.last.content_type
-  Page.of_type(type).each do |page|
-    page.should have_no_css "#page_list li a[href='/pages/#{page.id}']", 
-                            :text => page.title
+  for_each_page_of_type(Page.last.content_type) do |p|
+    page.should have_no_css "#page_list a[href='#{page_path(p)}']", 
+                            :text => p.name
   end
 end

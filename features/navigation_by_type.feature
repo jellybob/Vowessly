@@ -1,4 +1,3 @@
-@wip
 Feature: Listing pages by type
   As a user
   I want to view a list of pages by type
