@@ -7,7 +7,8 @@ When "there are no pages" do
 end
 
 When "there are some pages" do
-  
+  2.times { Factory.create(:page, :content_type => "Page") }
+  Factory.create(:page, :content_type => "Vowess")
 end
 
 Given /^I have added the following facts? to the page:$/ do |facts|
