@@ -46,4 +46,28 @@ describe Page do
       Page.new(field => " Hello ").send(field).should eq("Hello")
     end
   end
+
+  describe "listing content_types" do
+    before(:each) do
+      2.times { Factory.create(:page, :content_type => "Page") }
+      Factory.create(:page, :content_type => "Vowess")
+    end
+    
+    it "returns the content types in alphabetical order" do
+      Page.content_types.should eq([ "Page", "Vowess" ])
+    end
+  end
+
+  describe "finding pages by their content type" do
+    before(:each) do
+      @pages = []
+      2.times { @pages << Factory.create(:page, :content_type => "Page") }
+      @pages << Factory.create(:page, :content_type => "Vowess")
+    end
+
+    subject { Page.of_type("Page").all }
+    it { should include @pages.first }
+    it { should include @pages.second }
+    it { should_not include @pages.third }
+  end
 end
