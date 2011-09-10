@@ -19,6 +19,12 @@ class PagesController < ApplicationController
     end
     respond_with page
   end
+  
+  def destroy
+    page.destroy
+    flash[:notice] = "The page #{page.name} has been deleted."
+    redirect_to root_path
+  end
 
   def find_page
     page = Page.where(:content_type_slug => params[:type], :name_slug => params[:name]).first

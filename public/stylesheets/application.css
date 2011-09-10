@@ -148,6 +148,17 @@ a.unresolved {
     top: 3px;
   }
 
+.delete_page a {
+  text-decoration: none;
+  background-image: url('/images/icons/16x16/delete.png');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  padding-top: 2px;
+  font-weight: bold;
+  color: #d00;
+  float: right;
+}
+
 /* Autocompletion */
 ul.ui-autocomplete {
   width: 10px;

@@ -11,6 +11,11 @@ When "there are some pages" do
   Factory.create(:page, :content_type => "Vowess")
 end
 
+When "I am viewing a page" do
+  @page = Factory.create(:page)
+  visit page_path(@page)
+end
+
 Given /^I have added the following facts? to the page:$/ do |facts|
   facts.hashes.each do |fact|
     @current_page.facts.create!(
@@ -30,10 +35,22 @@ Given /^I have created a "([^"]*)" page called "([^"]*)" with the body:$/ do |co
   create_page(content_type, name, body)
 end
 
+When "I choose to delete the page" do
+  click_link "Delete This Page"
+end
+
 When /^I expand "([^"]*)"$/ do |fact|
   within ".fact:has(h3:contains('#{fact}'))" do
     click_link("Toggle details")
   end
+end
+
+Then "the page should have been deleted" do
+  lambda { Page.find(@page.id) }.should raise_error(Mongoid::Errors::DocumentNotFound)
+end
+
+Then "I should be told it was deleted" do
+  page.should have_content "The page #{@page.name} has been deleted."
 end
 
 Then /^I should see the fact "([^"]*)"$/ do |fact|
