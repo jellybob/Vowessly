@@ -6,6 +6,7 @@ gem 'activo-rails', :git => "https://github.com/jellybob/activo-rails.git"
 gem 'bson_ext', '1.2.1'
 gem 'mongo', '1.2.1'
 gem 'decent_exposure', :git => 'https://github.com/jellybob/decent_exposure.git'
+gem 'escape_utils', '0.2.4'
 gem 'formtastic', '1.2.3'
 gem 'hoptoad_notifier', '2.4.5'
 gem 'mongoid', '2.0.0.rc.7'
