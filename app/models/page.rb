@@ -4,11 +4,11 @@ class Page
   include Mongoid::Versioning
   include Mongoid::Timestamps
   include WhitespaceStripper
-  
+
   def self.home
-    order_by(:created_at.asc).first
+    where(:name => "Home").first
   end
-  
+
   index :created_at
 
   field :name, :type => String
@@ -33,7 +33,7 @@ class Page
 
   strip_whitespace :name, :content_type
   embeds_many :facts
-  
+
   named_scope :of_type, lambda { |type| where(:content_type => type) }
 
   def self.content_types
