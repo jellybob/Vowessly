@@ -8,3 +8,4 @@ function run {
 run addons:add mongohq:free
 run addons:add newrelic:standard
 run addons:add memcache:5mb
+run "config:set APP_NAME=$APP"
