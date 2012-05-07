@@ -1,0 +1,10 @@
+#!/bin/bash
+APP=$1
+
+function run {
+  heroku $@ --app $APP
+}
+
+run addons:add mongohq:free
+run addons:add newrelic:standard
+run addons:add memcache:5mb
