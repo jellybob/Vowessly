@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def main_navigation(menu)
-    if ENV["APP_NAME"] == "vowessly-cedar"
+    if ENV["APP_NAME"] == "vowessly"
       menu.item "Canterbury", "/by_province/Canterbury"
       menu.item "York", "/by_province/York"
     end
