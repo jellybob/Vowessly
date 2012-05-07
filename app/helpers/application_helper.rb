@@ -9,7 +9,7 @@ module ApplicationHelper
       menu.item "York", "/by_province/York"
     end
 
-    Page.content_types.reject { |t| t == "page" }.each do |type|
+    Page.content_types.reject { |t| t == "Page" }.each do |type|
       menu.item type.pluralize, content_type_path(type), :class => "type"
     end
 
