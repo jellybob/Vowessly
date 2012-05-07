@@ -4,8 +4,10 @@ module ApplicationHelper
   end
 
   def main_navigation(menu)
-    menu.item "Canterbury", "/by_province/Canterbury"
-    menu.item "York", "/by_province/York"
+    if ENV["APP_NAME"] == "vowessly"
+      menu.item "Canterbury", "/by_province/Canterbury"
+      menu.item "York", "/by_province/York"
+    end
 
     Page.content_types.each do |type|
       menu.item type.pluralize, content_type_path(type), :class => "type"
@@ -17,7 +19,7 @@ module ApplicationHelper
   def user_navigation(menu)
     menu.item image_tag("session/home.png", :title => "Home"), root_path
   end
-  
+
   def status_menu
     render "search/form"
   end
