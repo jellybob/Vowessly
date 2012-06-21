@@ -4,22 +4,21 @@ describe HomeController do
   context "on a GET to #index" do
     context "when no pages have been created" do
       before(:each) { get :index }
-    
+
       it { should respond_with(:success) }
       it { should render_template(:index) }
     end
 
-    context "when pages have been created" do
+    context "when a home page has been created" do
       before(:each) do
-        @page_one = Factory.create(:page)
-        @page_two = Factory.create(:page)
-        
+        @home = FactoryGirl.create(:home_page)
+
         get :index
       end
 
       it { should respond_with(:redirect) }
-      it "redirect to the first page to be created" do
-        subject.should redirect_to(@page_one)
+      it "redirect to the home page" do
+        subject.should redirect_to(@home)
       end
     end
   end

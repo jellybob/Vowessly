@@ -3,16 +3,17 @@ def create_page(content_type, name, body = nil)
 end
 
 When "there are no pages" do
-  # noop 
+  # noop
 end
 
 When "there are some pages" do
-  2.times { Factory.create(:page, :content_type => "Page") }
-  Factory.create(:page, :content_type => "Vowess")
+  FactoryGirl.create(:page, :content_type => "Page", :name => "Home")
+  2.times { FactoryGirl.create(:page, :content_type => "Page") }
+  FactoryGirl.create(:page, :content_type => "Vowess")
 end
 
 When "I am viewing a page" do
-  @page = Factory.create(:page)
+  @page = FactoryGirl.create(:page)
   visit page_path(@page)
 end
 
@@ -55,7 +56,7 @@ end
 
 Then /^I should see the fact "([^"]*)"$/ do |fact|
   @current_fact = fact
-  Then %Q{I should see "#{fact}" within ".fact h3"}
+  step %Q{I should see "#{fact}" within ".fact h3"}
 end
 
 Then /^the fact "([^"]*)" should not be present$/ do |fact|
@@ -65,7 +66,7 @@ end
 Then /^the (\w+) should be "([^"]*)"$/ do |attribute, value|
   within ".fact:has(h3:contains('#{@current_fact}'))" do
     within ".#{attribute.downcase.parameterize}" do
-      Then %Q{I should see "#{value}"}
+      step %Q{I should see "#{value}"}
     end
   end
 end

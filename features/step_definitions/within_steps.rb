@@ -14,7 +14,7 @@
 each do |within, selector|
   Then /^(.+) #{within}$/ do |step|
     with_scope(selector) do
-      Then step
+      step step
     end
   end
 end

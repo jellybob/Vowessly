@@ -5,10 +5,10 @@ describe Page do
   it { should be_timestamped_document }
   it { should be_versioned_document }
   it { should be_paranoid_document }
-  
+
   it { should have_field(:name).of_type(String) }
   it { should validate_presence_of(:name) }
-  
+
   it { should have_field(:content_type).of_type(String) }
   it { should validate_presence_of(:content_type) }
 
@@ -30,11 +30,11 @@ describe Page do
 
   describe "the home page finder" do
     before(:each) do
-      @not_home = Factory.create(:page, :created_at => "2010-01-01 00:00:00", :name => "Not the home page")
-      @home = Factory.create(:page, :created_at => "2009-01-01 00:00:00", :name => "Home Page")
+      @not_home = FactoryGirl.create(:page, :created_at => 1.day.ago, :name => "Home")
+      @home = FactoryGirl.create(:page, :created_at => 2.days.ago, :name => "Home")
     end
 
-    it "should return the first page to be created, by creation time" do
+    it "should return the first page named home to be created, by creation time" do
       Page.home.should eq(@home)
     end
   end
@@ -49,10 +49,10 @@ describe Page do
 
   describe "listing content_types" do
     before(:each) do
-      2.times { Factory.create(:page, :content_type => "Page") }
-      Factory.create(:page, :content_type => "Vowess")
+      2.times { FactoryGirl.create(:page, :content_type => "Page") }
+      FactoryGirl.create(:page, :content_type => "Vowess")
     end
-    
+
     it "returns the content types in alphabetical order" do
       Page.content_types.should eq([ "Page", "Vowess" ])
     end
@@ -61,8 +61,8 @@ describe Page do
   describe "finding pages by their content type" do
     before(:each) do
       @pages = []
-      2.times { @pages << Factory.create(:page, :content_type => "Page") }
-      @pages << Factory.create(:page, :content_type => "Vowess")
+      2.times { @pages << FactoryGirl.create(:page, :content_type => "Page") }
+      @pages << FactoryGirl.create(:page, :content_type => "Vowess")
     end
 
     subject { Page.of_type("Page").all }

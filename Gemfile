@@ -1,31 +1,35 @@
 source :rubygems
 
-gem 'rails', '3.0.4'
+gem 'rails'
 
 gem 'activo-rails', :git => "https://github.com/jellybob/activo-rails.git"
-gem 'bson_ext', '1.2.1'
-gem 'mongo', '1.2.1'
-gem 'decent_exposure', :git => 'https://github.com/jellybob/decent_exposure.git'
-gem 'escape_utils', '0.2.4'
-gem 'formtastic', '1.2.3'
-gem 'hoptoad_notifier', '2.4.5'
-gem 'mongoid', '2.0.0.rc.7'
-gem 'mongoid_slug', '0.6.2', :require => 'mongoid/slug'
-gem 'RedCloth', '4.2.7'
-gem 'dalli', '1.0.2'
-gem 'unicorn', '3.6.2'
+gem 'bson_ext'
+gem 'mongo'
+gem 'decent_exposure'
+gem 'escape_utils'
+gem 'formtastic', '1.2.4'
+gem 'hoptoad_notifier'
+gem 'mongoid'
+gem 'mongoid_slug', :require => 'mongoid/slug'
+gem 'RedCloth'
+gem 'dalli'
+gem 'unicorn'
 
-group :test, :development do
-  gem 'autotest', '4.4.6'
-  gem 'capybara', '1.0.1'
-  gem 'cucumber-rails', '0.3.2'
-  gem 'cucumber', '1.0.2'
-  gem 'database_cleaner', '0.6.3'
-  gem 'factory_girl', '1.3.3'
-  gem 'launchy', '0.3.7'
-  gem 'mongoid-rspec', :git => 'https://github.com/jellybob/mongoid-rspec.git'
-  gem 'rspec-rails', '2.0.1'
-  gem 'ruby-debug19', '0.11.6'
-  gem 'shoulda', '2.11.3'
-  gem 'foreman', '0.13.0'
+group :development do
+  gem 'foreman'
+end
+
+group :test, :cucumber do
+  gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'launchy'
+  gem 'mongoid-rspec'
+  gem 'rspec-rails'
+  gem 'shoulda'
+end
+
+group :cucumber do
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'cucumber'
 end

@@ -2,7 +2,7 @@ Feature: The home page
   As a researcher
   I want to see a useful home page
   So that I don't feel lost and alone
-  
+
   Scenario: No pages have been created yet
     When I go to the home page
     Then I should be on the home page
@@ -10,6 +10,6 @@ Feature: The home page
     And I should see "To get started, lets create your first page."
 
   Scenario: A page has been created
-    Given I have created a "Person" page called "Alice Hampton"
+    Given I have created a "Page" page called "Home"
     When I go to the home page
-    Then I should be on the "Person" page for "Alice Hampton"
+    Then I should be on the "Page" page for "Home"

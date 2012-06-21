@@ -6,7 +6,7 @@ class Page
   include WhitespaceStripper
 
   def self.home
-    where(:name => "Home").first
+    where(:name => "Home").asc(:created_at).first
   end
 
   index :created_at

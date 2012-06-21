@@ -3,8 +3,8 @@ require 'spec_helper'
 describe PagesController do
   context "on a GET to #show" do
     context "when the page being requested exists" do
-      let(:page) { Factory.create(:page) }
-      
+      let(:page) { FactoryGirl.create(:page) }
+
       before(:each) { get :show, :id => page.to_param }
       it { should respond_with(:success) }
       it { should render_template(:show) }
@@ -19,7 +19,7 @@ describe PagesController do
 
   context "on a POST to #create" do
     context "when the data provided was valid" do
-      let(:attributes) { Factory.attributes_for(:page, :content_type => "person", :name => "Alice Hampton") }
+      let(:attributes) { FactoryGirl.attributes_for(:page, :content_type => "person", :name => "Alice Hampton") }
       let(:new_page) { Page.last }
 
       before(:each) { post :create, :page => attributes }
@@ -32,8 +32,8 @@ describe PagesController do
     end
 
     context "when the data provided was not valid" do
-      let(:attributes) { Factory.attributes_for(:page, :name => "") }
-      
+      let(:attributes) { FactoryGirl.attributes_for(:page, :name => "") }
+
       before(:each) { post :create, :page => attributes }
       it { should respond_with(:success) }
       it { should render_template(:new) }
@@ -45,8 +45,8 @@ describe PagesController do
   end
 
   context "on a GET to #edit" do
-    let(:page) { Factory.create(:page) }
-    
+    let(:page) { FactoryGirl.create(:page) }
+
     before(:each) { get :edit, :id => page.to_param }
     it { should respond_with(:success) }
     it { should render_template(:edit) }
@@ -55,13 +55,13 @@ describe PagesController do
   context "on a PUT to #update" do
     context "when the data provided was valid" do
       let(:attributes) { HashWithIndifferentAccess.new(:name => "Bob Monkhouse", :content_type => "Celebrity", :body => "He likes to talk.") }
-      let(:page) { Factory.create(:page) }
+      let(:page) { FactoryGirl.create(:page) }
 
       before(:each) { put :update, :id => page.to_param, :page => attributes }
       it { should respond_with(:redirect) }
       it { should redirect_to(page) }
       it { should set_the_flash.to("Your changes have been saved.") }
-      
+
       describe "the updated page" do
         before(:each) { page.reload }
         specify { page.name.should eq("Bob Monkhouse") }
@@ -72,7 +72,7 @@ describe PagesController do
 
     context "when the data provided was invalid" do
       let(:attributes) { HashWithIndifferentAccess.new(:name => "Bob Monkhouse", :content_type => "", :body => "He likes to talk.") }
-      let(:page) { Factory.create(:page) }
+      let(:page) { FactoryGirl.create(:page) }
 
       before(:each) { put :update, :id => page.to_param, :page => attributes }
       it { should respond_with(:success) }
@@ -83,13 +83,13 @@ describe PagesController do
 
   context "on a GET to #find_page" do
     context "when the page exists" do
-      let(:page) { Factory.create(:page, :content_type => "Person", :name => "Alice Hampton") }
+      let(:page) { FactoryGirl.create(:page, :content_type => "Person", :name => "Alice Hampton") }
 
       before(:each) do
         page
         get :find_page, :type => "person", :name => "alice-hampton"
       end
-      
+
       it { should respond_with(301) }
       it { should redirect_to(page) }
     end

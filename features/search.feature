@@ -4,7 +4,8 @@ Feature: Searching
   In order to find related information
 
   Background:
-    Given I have created a "Person" page called "Alice Hampton"
+    Given I have created a "Page" page called "Home"
+    And I have created a "Person" page called "Alice Hampton"
     And I have added the following fact to the page:
       | Label          | Content Type | Value                           | Source                                                     |
       | Date of Birth  | Date         | C15                             | Josiah Clement Wedgwood, History of Parliament: 1439-1509  |
