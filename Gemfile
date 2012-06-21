@@ -30,6 +30,7 @@ end
 
 group :cucumber do
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'cucumber-rails'
   gem 'cucumber'
 end
