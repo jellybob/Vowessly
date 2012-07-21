@@ -9,7 +9,7 @@ end
 When "there are some pages" do
   FactoryGirl.create(:page, :content_type => "Page", :name => "Home")
   2.times { FactoryGirl.create(:page, :content_type => "Page") }
-  FactoryGirl.create(:page, :content_type => "Vowess")
+  2.times { FactoryGirl.create(:page, :content_type => "Vowess") }
 end
 
 When "I am viewing a page" do
