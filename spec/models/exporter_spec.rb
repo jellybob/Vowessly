@@ -54,6 +54,7 @@ describe Exporter do
         content_type: "Page",
         name_slug: page[:name_slug]
       },
+      name_slug: page[:name_slug],
       facts: page[:facts].collect { |fact|
         stub(:attributes => {
           label: fact[:label],
