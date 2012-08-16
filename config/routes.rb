@@ -9,9 +9,10 @@ Vowessly::Application.routes.draw do
       end
     end
   end
-    
+  resource :export, :controller => "export"
+
   match 'by_province/:province', :controller => "pages", :action => "by_province"
   match ':type/:name', :controller => "pages", :action => "find_page"
-  
+
   root :to => "home#index"
 end
