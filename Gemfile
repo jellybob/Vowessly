@@ -19,18 +19,15 @@ group :development do
   gem 'foreman'
 end
 
-group :test, :cucumber do
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'cucumber-rails'
+  gem 'cucumber'
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'launchy'
   gem 'mongoid-rspec'
   gem 'rspec-rails'
   gem 'shoulda'
-end
-
-group :cucumber do
-  gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'cucumber-rails'
-  gem 'cucumber'
 end
