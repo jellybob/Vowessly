@@ -1,4 +1,3 @@
-@wip
 Feature: Deleting pages
   As a researcher
   I want to delete a page

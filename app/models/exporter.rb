@@ -1,6 +1,10 @@
 class Exporter
   attr_reader :pages
 
+  def self.export
+    new.export
+  end
+
   def initialize(pages = Page.all)
     @pages = pages
   end
@@ -25,7 +29,7 @@ class Exporter
   def attribute_hash_without_id(obj)
     hash = {}
     obj.attributes.each do |name, value|
-      hash[name.to_sym] = value
+      hash[name.to_sym] = value.to_s
     end
     hash.delete(:_id)
     hash
