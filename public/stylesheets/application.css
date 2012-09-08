@@ -21,7 +21,7 @@ a.unresolved {
     margin: 0.4em 0px 0.5em;
     line-height: 1.5em;
   }
-  
+
   .body h3 {
     border-bottom: 1px solid #666;
     padding-bottom: 5px;
@@ -43,7 +43,7 @@ a.unresolved {
   .body dd {
     margin-bottom: 0.5em;
   }
-  
+
 /* Facts */
 .fact {
   margin-bottom: 1em;
@@ -66,7 +66,7 @@ a.unresolved {
     .fact .value input {
       width: 100%;
     }
-    
+
     .fact h3 label,
     .fact .value label {
       display: none;
@@ -79,7 +79,7 @@ a.unresolved {
     margin: 0;
     vertical-align: top;
   }
-  
+
   .fact .expand,
   .fact .contract {
     float: left;
@@ -115,7 +115,7 @@ a.unresolved {
     .fact .metadata dd {
       padding-top: 0.3em;
     }
-    
+
     .fact .metadata ul.actions {
       list-style: none;
       margin-top: 0.5em;
@@ -142,7 +142,7 @@ a.unresolved {
   text-decoration: none;
   font-weight: bold;
 }
-  
+
   .new_fact_button a img {
     position: relative;
     top: 3px;
@@ -185,7 +185,7 @@ ul.ui-autocomplete {
 #facts ul, #content_types ul {
   list-style: none;
 }
-  
+
   #facts li span, #content_types li span {
     font-size: 1.2em;
     margin-bottom: 0.5em;
@@ -200,4 +200,12 @@ ul.ui-autocomplete {
   #facts li img, #content_type li img {
     position: relative;
     top: 2px;
+  }
+
+.bibliography {
+  list-style: none;
+}
+
+  .bibliography li {
+    margin-bottom: 1em;
   }
