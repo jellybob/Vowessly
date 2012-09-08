@@ -1,0 +1,9 @@
+class Bibliographer::Chapter < Bibliographer::Base
+  def to_s
+    "#{names}, '#{title}' in |#{book_title}|, ed. by #{names("Editor")} (#{pub_place}: #{publisher}, #{year})"
+  end
+
+  def book_title
+    first_fact("Book title")
+  end
+end

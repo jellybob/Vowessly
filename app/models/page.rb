@@ -43,4 +43,8 @@ class Page
   def surname
     name.split(" ").last
   end
+
+  def add_fact(fact = {})
+    facts.create(fact)
+  end
 end
