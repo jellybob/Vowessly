@@ -12,6 +12,6 @@ class Bibliographer::JournalArticle < Bibliographer::Base
   end
 
   def volume
-    [ first_fact("Journal volume"), first_fact("Journal issue") ].reject(&:blank?).join("/")
+    [ first_fact("Journal volume"), first_fact("Journal issue", missing_allowed = true) ].reject(&:blank?).join("/")
   end
 end

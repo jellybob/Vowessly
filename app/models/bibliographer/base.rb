@@ -41,12 +41,12 @@ class Bibliographer::Base
     first_fact("Year")
   end
 
-  def first_fact(name)
+  def first_fact(name, missing_allowed = false)
     fact = page.facts.where(:label => name).first
     if fact
       fact.value
     else
-      "NO #{name.upcase.pluralize}!!!"
+      missing_allowed ? nil : "NO #{name.upcase.pluralize}!!!"
     end
   end
 end
