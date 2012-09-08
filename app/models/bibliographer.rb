@@ -9,7 +9,7 @@ module Bibliographer
     when "Journal article"
       Bibliographer::JournalArticle.new(page).to_s
     else
-      "ARGH - UNKNOWN TYPE #{entry_type} for #{page.name}"
+      "<span class='color: red'>ARGH - UNKNOWN TYPE #{entry_type} for #{page.name}</span>"
     end
   end
 
