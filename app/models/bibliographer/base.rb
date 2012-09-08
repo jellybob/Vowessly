@@ -46,7 +46,7 @@ class Bibliographer::Base
     if fact
       fact.value
     else
-      missing_allowed ? nil : "NO #{name.upcase.pluralize}!!!"
+      missing_allowed ? nil : "<span style='color: red'>NO #{name.upcase.pluralize}!!!</span>"
     end
   end
 end
