@@ -13,6 +13,7 @@ module ApplicationHelper
       menu.item type.pluralize, content_type_path(type), :class => "type"
     end
 
+    menu.item "Bibliography", bibliography_path
     menu.item "Create a Page", new_page_path
   end
 
