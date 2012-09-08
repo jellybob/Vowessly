@@ -4,6 +4,6 @@ class Bibliographer::Chapter < Bibliographer::Base
   end
 
   def book_title
-    first_fact("Book title")
+    capitalize_title(first_fact("Book title"))
   end
 end

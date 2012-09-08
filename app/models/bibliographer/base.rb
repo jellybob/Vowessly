@@ -26,7 +26,7 @@ class Bibliographer::Base
   end
 
   def title
-    first_fact("Title")
+    capitalize_title(first_fact("Title"))
   end
 
   def pub_place
@@ -48,5 +48,14 @@ class Bibliographer::Base
     else
       missing_allowed ? nil : "<span style='color: red'>NO #{name.upcase.pluralize}!!!</span>"
     end
+  end
+
+  def capitalize_title(title)
+    stop_words = %w(and on in the or of)
+    first_word == true
+    title.split(" ").collect { |word|
+      stop_words.include?(word) && !first_word ? word : word.capitalize
+      first_word = false
+    }.join(" ")
   end
 end

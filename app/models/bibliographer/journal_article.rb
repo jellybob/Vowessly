@@ -4,7 +4,7 @@ class Bibliographer::JournalArticle < Bibliographer::Base
   end
 
   def journal_title
-    first_fact("Journal title")
+    capitalize_title(first_fact("Journal title"))
   end
 
   def pages
