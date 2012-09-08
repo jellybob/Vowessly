@@ -43,6 +43,10 @@ class Bibliographer::Base
 
   def first_fact(name)
     fact = page.facts.where(:label => name).first
-    fact && fact.value
+    if fact
+      fact.value
+    else
+      "NO #{name.upcase.pluralize}!!!"
+    end
   end
 end
