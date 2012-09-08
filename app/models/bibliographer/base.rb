@@ -25,6 +25,16 @@ class Bibliographer::Base
     names.join(", ")
   end
 
+  def editor_names
+    name_facts = page.facts.where(:label => "Editor")
+    names = name_facts.collect(&:value)
+
+    unless names.size == 1
+      names[names.size - 1] = "and #{names.last}"
+    end
+    names.join(", ")
+  end
+
   def title
     capitalize_title(first_fact("Title"))
   end
