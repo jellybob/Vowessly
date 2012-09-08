@@ -26,7 +26,9 @@ class Bibliographer::Base
   end
 
   def editor_names
-    name_facts = page.facts.where(:label => "Editor")
+    name_facts = page.facts.where(:label => "Editor").all
+    return "<span style='color: red'>NO EDITORS!!!</span>" if name_facts.size == 0
+
     names = name_facts.collect(&:value)
 
     unless names.size == 1
