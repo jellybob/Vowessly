@@ -54,8 +54,9 @@ class Bibliographer::Base
     stop_words = %w(and on in the or of)
     first_word = true
     title.split(" ").collect { |word|
-      stop_words.include?(word) && !first_word ? word : word.capitalize
+      new_word = stop_words.include?(word) && !first_word ? word : word.capitalize
       first_word = false
+      new_word
     }.join(" ")
   end
 end
