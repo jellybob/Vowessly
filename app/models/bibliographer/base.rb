@@ -8,6 +8,7 @@ class Bibliographer::Base
   def names(label = "Author")
     name_facts = page.facts.where(:label => label)
     first_name = name_facts.shift
+    return "NO NAMES!!!" if first_name.nil?
 
     name_parts = first_name.value.split(" ")
     surname = name_parts.pop
