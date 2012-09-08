@@ -52,7 +52,7 @@ When /^I ask for the bibliography$/ do
 end
 
 Then /^it should look like:$/ do |string|
-  Bibliographer.reference_for(@entry).should == string.strip
+  Bibliographer.reference_for(@entry).to_s.should == string.strip
 end
 
 Then /^it should be ordered by surname alphabetically$/ do
