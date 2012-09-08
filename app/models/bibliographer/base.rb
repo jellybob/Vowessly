@@ -51,12 +51,6 @@ class Bibliographer::Base
   end
 
   def capitalize_title(title)
-    stop_words = %w(and on in the or of)
-    first_word = true
-    title.split(" ").collect { |word|
-      new_word = stop_words.include?(word) && !first_word ? word : word.capitalize
-      first_word = false
-      new_word
-    }.join(" ")
+    title
   end
 end
