@@ -1,12 +1,15 @@
 module Bibliographer
   def self.reference_for(page)
-    case page.facts.where(label: "Type").first.value
+    entry_type = page.facts.where(label: "Type").first.value
+    case entry_type
     when "Book"
       Bibliographer::Book.new(page).to_s
     when "Chapter in book"
       Bibliographer::Chapter.new(page).to_s
     when "Journal article"
       Bibliographer::JournalArticle.new(page).to_s
+    else
+      "ARGH - UNKNOWN TYPE #{entry_type} for #{page.name}"
     end
   end
 
