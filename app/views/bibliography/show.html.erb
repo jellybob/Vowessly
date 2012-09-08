@@ -1,5 +1,4 @@
 <ul class="bibliography">
-  <% last_name = nil %>
   <% @entries.each do |entry| %>
     <li><%= entry.to_s.sub("|", "<i>").sub("|", "</i>").html_safe %></li>
   <% end %>
