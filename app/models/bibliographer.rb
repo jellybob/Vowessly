@@ -9,4 +9,9 @@ module Bibliographer
       Bibliographer::JournalArticle.new(page).to_s
     end
   end
+
+  def self.entries
+    pages = Page.where(:content_type => "Reading").all
+    pages.collect { |p| reference_for(p) }.sort
+  end
 end
