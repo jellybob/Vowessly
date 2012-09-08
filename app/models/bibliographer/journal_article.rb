@@ -1,6 +1,6 @@
 class Bibliographer::JournalArticle < Bibliographer::Base
   def to_s
-    "#{names}, '#{title}' |#{journal_title}|, #{volume} (#{year}), #{pages}"
+    "#{names}, '#{title}' |#{journal_title}|, #{volume}, (#{year}), #{pages}"
   end
 
   def journal_title
