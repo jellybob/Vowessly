@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def head
-    hoptoad_javascript_notifier
-  end
-
   def main_navigation(menu)
     if ENV["APP_NAME"] == "vowessly"
       menu.item "Canterbury", "/by_province/Canterbury"
