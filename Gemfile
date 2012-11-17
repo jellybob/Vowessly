@@ -12,7 +12,6 @@ gem 'hoptoad_notifier'
 gem 'mongoid'
 gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'RedCloth'
-gem 'dalli'
 gem 'unicorn'
 
 group :development do
