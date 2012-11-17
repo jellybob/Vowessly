@@ -34,6 +34,36 @@ information about him, and possibly be able to follow his family tree around.
 The birth place, being a location, will also be geocoded. That gives the possibility of integration with a
 mapping service, letting you find all the medieval vowesses in the area. Vowtastic!
 
+Setting up your own copy of Vowessly
+------------------------------------
+
+So, you're convinced are you? Here's how to get your own version of Vowessly running for free on Heroku.
+
+(This might work on Windows, but you may be better off borrowing a Mac from someone.)
+
+Create a Heroku account at http://heroku.com
+
+Download and install the Heroku toolbelt from https://toolbelt.heroku.com/
+
+Open a terminal (you can find it in the "Utilities" folder of your Applications)
+
+Enter the following commands, changing "my-vowessly" to a name of your choice.
+
+    export name="my-vowessly"
+    git clone git@github.com:jellybob/Vowessly
+    cd Vowessly
+    heroku login
+    heroku create $name
+    ./script/setup_heroku_app $name
+    git push heroku master
+
+Go to http://my-vowessly.herokuapp.com/, where you can now find your own version of Vowessly!
+
+Optionally, if you want a username and password, run these commands as well:
+
+    heroku config:set APP_USERNAME="your-username" APP_PASSWORD="your-password"
+    heroku restart
+
 Help! I'm Just a Researcher!
 ----------------------------
 
