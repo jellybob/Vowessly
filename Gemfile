@@ -12,6 +12,7 @@ gem 'formtastic', '1.2.4'
 gem 'hoptoad_notifier'
 gem 'mongoid'
 gem 'mongoid_slug', :require => 'mongoid/slug'
+gem 'psych'
 gem 'RedCloth'
 gem 'unicorn'
 
