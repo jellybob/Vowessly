@@ -1,5 +1,5 @@
 defaults: &defaults
-  host: "localhost"
+  host: "mongo"
   allow_dynamic_fields: false
   include_root_in_json: true
   parameterize_keys: true
