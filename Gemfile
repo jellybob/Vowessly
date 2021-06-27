@@ -1,5 +1,6 @@
 source :rubygems
 
+ruby "2.6.6"
 gem 'rails'
 
 gem 'activo-rails', :git => "https://github.com/jellybob/activo-rails.git"
@@ -12,6 +13,7 @@ gem 'hoptoad_notifier'
 gem 'mongoid'
 gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'RedCloth'
+gem 'syck'
 gem 'unicorn'
 
 group :development do
