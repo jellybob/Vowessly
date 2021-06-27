@@ -1,5 +1,6 @@
 source :rubygems
 
+ruby "2.6.6"
 gem 'rails'
 
 gem 'activo-rails', :git => "https://github.com/jellybob/activo-rails.git"
