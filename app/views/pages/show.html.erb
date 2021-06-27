@@ -1,6 +1,6 @@
 <div class="block">
   <div class="content">
-    <%= controls do |c|
+    <%#= controls do |c|
       c.item "Edit Page", edit_page_path(page), :icon => "edit_page"
     end %>
     <h2 class="title">
@@ -24,15 +24,18 @@
           <%= render partial: "facts/fact", locals: { page: page, fact: fact } %>
         </div>
       <% end %>
+      <!--
       <div class="new_fact_button">
         <a href="#"><%= image_tag("icons/16x16/add.png") %> Add a Fact</a>
       </div>
       <div class="fact" id="new_fact" style="display: none">
         <%= render partial: "facts/form", locals: { page: page, fact: Fact.new } %>
       </div>
+      -->
       <div class="clear"></div>
     </div>
   </div>
 </div>
-
+<!--
 <p class="delete_page"><%= link_to "Delete This Page", page, :method => :delete %></p>
+-->

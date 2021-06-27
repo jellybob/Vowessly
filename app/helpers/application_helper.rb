@@ -1,16 +1,14 @@
 module ApplicationHelper
   def main_navigation(menu)
-    if ENV["APP_NAME"] == "vowessly"
-      menu.item "Canterbury", "/by_province/Canterbury"
-      menu.item "York", "/by_province/York"
-    end
+    menu.item "Canterbury", "/by_province/Canterbury"
+    menu.item "York", "/by_province/York"
 
     Page.content_types.reject { |t| t == "Page" }.each do |type|
       menu.item type.pluralize, content_type_path(type), :class => "type"
     end
 
     menu.item "Bibliography", bibliography_path
-    menu.item "Create a Page", new_page_path
+    # menu.item "Create a Page", new_page_path
   end
 
   def user_navigation(menu)
